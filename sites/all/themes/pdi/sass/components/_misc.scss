@@ -156,7 +156,7 @@
     li {
       /* A simple method to get navigation links to appear in one line. */
       float: left; /* LTR */
-      padding: 0 10px 0 0; /* LTR */
+      padding: 0 10px 0 10px; /* LTR */
       list-style-type: none;
       list-style-image: none;
     }

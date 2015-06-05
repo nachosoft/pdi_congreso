@@ -11,9 +11,14 @@
 }
 
 #main-menu{
+  ul li{
+    border-right: solid 2px #525252;
+  }
   a{
     color: #777;
     text-decoration: none;
+    display: block;
+    padding: 5px;
   }
   a:hover{
     text-decoration: underline;

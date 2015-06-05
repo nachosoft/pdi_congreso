@@ -1,4 +1,5 @@
-/**
+
+@import "components/global/add_operator";@import "components/global/add_operator";/**
  * @file
  * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
  *
@@ -22,6 +23,8 @@
 @import "components/global/main";
 @import "components/global/menus";
 @import "components/global/links_buttons";
+@import "components/global/add_operator";
+
 
 /* SMACSS theme rules */
 /* @import "theme-A"; */
