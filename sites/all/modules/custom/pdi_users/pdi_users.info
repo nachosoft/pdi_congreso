@@ -1,0 +1,4 @@
+name = PDI Users administration
+description = "Provides an administration features for the users"
+package = PDI
+core = 7.x

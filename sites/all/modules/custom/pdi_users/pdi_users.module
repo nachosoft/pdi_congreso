@@ -1,0 +1,4 @@
+<?php
+include_once('inc/menu.inc');
+include_once('inc/permission.inc');
+include_once('inc/forms.inc');
