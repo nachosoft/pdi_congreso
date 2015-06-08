@@ -28,6 +28,7 @@ function pdi_users_menu_add_confirm(){
   $output .= '<div class="cta">
   <a href="/pdi/users/add">Agregar otro operador?</a>
 </div></div>';
+
   return $output;
 }
 

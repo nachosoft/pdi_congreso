@@ -1913,16 +1913,17 @@ body {
 /* line 13, ../sass/components/global/_main.scss */
 #header {
   padding-top: 15px;
-  background: #d4cfbb;
+  background: url(../images/flor.png) no-repeat right -35px bottom -37px #d4cfbb;
+  background-size: 12% , 100%;
   padding-bottom: 20px;
 }
 
-/* line 19, ../sass/components/global/_main.scss */
+/* line 20, ../sass/components/global/_main.scss */
 #content {
   padding: 30px 50px 50px 50px;
 }
 
-/* line 24, ../sass/components/global/_main.scss */
+/* line 25, ../sass/components/global/_main.scss */
 .sidebar-first #content {
   float: left;
   width: 65%;
@@ -1930,24 +1931,24 @@ body {
   margin-right: 0;
 }
 
-/* line 34, ../sass/components/global/_main.scss */
+/* line 35, ../sass/components/global/_main.scss */
 #main {
   padding-top: 4em;
 }
 
-/* line 38, ../sass/components/global/_main.scss */
+/* line 39, ../sass/components/global/_main.scss */
 #name-and-slogan {
   display: table;
   height: 120px;
 }
-/* line 41, ../sass/components/global/_main.scss */
+/* line 42, ../sass/components/global/_main.scss */
 #name-and-slogan h1.header__site-name {
   display: table-cell;
   vertical-align: middle;
   padding-left: 10px;
 }
 
-/* line 48, ../sass/components/global/_main.scss */
+/* line 49, ../sass/components/global/_main.scss */
 .sidebars {
   float: none;
   width: 30%;
@@ -1956,7 +1957,7 @@ body {
   padding-top: 30px;
 }
 
-/* line 56, ../sass/components/global/_main.scss */
+/* line 57, ../sass/components/global/_main.scss */
 .sidebar-first .region-sidebar-first {
   width: auto;
   float: none;

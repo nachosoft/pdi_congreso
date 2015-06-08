@@ -37,8 +37,10 @@ function pdi_users_add_operator_form_submit($form,&$form_state) {
     5 => 'Operador', 
   );
 
+
   // Create a random password.
   $upass = user_password();
+
   // Get the user info.
   $nuser = array(
     'name' => $form_state['values']['operator_username'], 
@@ -48,7 +50,7 @@ function pdi_users_add_operator_form_submit($form,&$form_state) {
     'init' => $form_state['values']['operator_email'], 
     'field_area' => $duser->field_area,
     'status' => 1, 
-    'access' => REQUEST_TIME,
+    'access' => REQUEST_TIME, 
   );
 
   // Save the user.
