@@ -1,0 +1,4 @@
+name = PDI Action Lines.
+description = "Provides an administration features for the actions lines"
+package = PDI
+core = 7.x

@@ -543,3 +543,14 @@ table {
   @include leader(1);
   @include trailer(1);
 }
+
+.field-collection-view,
+.field-collection-container{
+  border-bottom: none;
+}
+
+.field-collection-view{
+  padding: 0;
+  margin: 0;
+}
+

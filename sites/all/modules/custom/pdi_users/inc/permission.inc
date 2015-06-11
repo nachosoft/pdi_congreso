@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Callback that decides if the user can create an opepador or not.
+ * Callback that decides if the user can create an operator or not.
  */
 function user_can_create_operator($permission = null) {
   if ( !is_null($permission) ) {

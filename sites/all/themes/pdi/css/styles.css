@@ -686,6 +686,18 @@ table {
   margin-bottom: 1.5em;
 }
 
+/* line 547, ../sass/_normalize.scss */
+.field-collection-view,
+.field-collection-container {
+  border-bottom: none;
+}
+
+/* line 552, ../sass/_normalize.scss */
+.field-collection-view {
+  padding: 0;
+  margin: 0;
+}
+
 /* Layout rules */
 /**
  * @file
@@ -1965,6 +1977,18 @@ body {
   margin-right: 0;
 }
 
+/* line 64, ../sass/components/global/_main.scss */
+.messages--pdi_message.pdi_message {
+  background-image: none;
+  border: none;
+  background: #e6e0c9;
+  text-align: center;
+}
+/* line 69, ../sass/components/global/_main.scss */
+.messages--pdi_message.pdi_message ul li {
+  list-style: none;
+}
+
 /* line 2, ../sass/components/global/_menus.scss */
 #secondary-menu a {
   color: #000;
@@ -2067,6 +2091,75 @@ a {
 /* line 45, ../sass/components/global/_add_operator.scss */
 .page-pdi-users-add .cta a:hover {
   background: #B1991E;
+}
+
+/* line 2, ../sass/components/global/_action_line.scss */
+.node-type-action-line .breadcrumb {
+  display: none;
+}
+/* line 6, ../sass/components/global/_action_line.scss */
+.node-type-action-line .page__title {
+  margin-bottom: 50px;
+}
+/* line 9, ../sass/components/global/_action_line.scss */
+.node-type-action-line .label-inline {
+  display: inline-block;
+  padding-right: 15px;
+}
+/* line 14, ../sass/components/global/_action_line.scss */
+.node-type-action-line .actions_wrapper {
+  margin: 20px 0;
+}
+/* line 16, ../sass/components/global/_action_line.scss */
+.node-type-action-line .actions_wrapper > h3 {
+  margin: 0;
+  padding: 20px;
+  background: #e6e0c9;
+  text-align: center;
+  border-bottom: solid 1px #c0c0c0;
+}
+/* line 24, ../sass/components/global/_action_line.scss */
+.node-type-action-line .action {
+  padding: 40px 20px;
+}
+/* line 27, ../sass/components/global/_action_line.scss */
+.node-type-action-line .action.odd {
+  background: #e6e0c9;
+}
+/* line 30, ../sass/components/global/_action_line.scss */
+.node-type-action-line .action.even {
+  background: #f3f3f3;
+}
+
+/* line 1, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress {
+  height: 30px;
+}
+/* line 3, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .progress_calcule {
+  display: block;
+  min-width: 250px;
+  float: right;
+  margin-right: 30px;
+}
+/* line 9, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .progress_calcule:after {
+  clear: both;
+}
+/* line 13, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .cta a {
+  display: block;
+  background: #d4cfbb;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 20px;
+}
+/* line 24, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .cta a:hover {
+  background: #BAB7A8;
 }
 
 /* SMACSS theme rules */

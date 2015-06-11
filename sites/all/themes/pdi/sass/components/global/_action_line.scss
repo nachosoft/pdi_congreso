@@ -1,0 +1,33 @@
+.node-type-action-line{
+  .breadcrumb{
+    display: none;
+  }
+
+  .page__title{
+    margin-bottom: 50px;
+  }
+  .label-inline{
+    display: inline-block;
+    padding-right: 15px;
+  }
+
+  .actions_wrapper{
+    margin: 20px 0;
+    >h3{
+      margin: 0;
+      padding: 20px;
+      background: #e6e0c9;
+      text-align: center;
+      border-bottom: solid 1px #c0c0c0;
+    }
+  }
+  .action{
+    padding: 40px 20px;
+  }
+  .action.odd{
+    background: #e6e0c9;
+  }
+  .action.even{
+    background: #f3f3f3;
+  }
+}

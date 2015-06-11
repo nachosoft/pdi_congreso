@@ -60,3 +60,13 @@ body{
   margin-left: 0;
   margin-right: 0;
 }
+
+.messages--pdi_message.pdi_message{
+  background-image: none;
+  border: none;
+  background: #e6e0c9;
+  text-align: center;
+  ul li{
+    list-style: none;
+  }
+}
