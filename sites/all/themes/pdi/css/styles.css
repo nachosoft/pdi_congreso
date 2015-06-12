@@ -1904,25 +1904,15 @@ tr.selected td {
 }
 /* line 1, ../sass/components/global/_main.scss */
 body {
-  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjY1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmQ5Y2MiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.65) 0%, rgba(226, 217, 204, 0) 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.65)), color-stop(100%, rgba(226, 217, 204, 0)));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.65) 0%, rgba(226, 217, 204, 0) 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.65) 0%, rgba(226, 217, 204, 0) 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.65) 0%, rgba(226, 217, 204, 0) 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65) 0%, rgba(226, 217, 204, 0) 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6ffffff', endColorstr='#00e2d9cc',GradientType=0 );
-  /* IE6-8 */
+  background: #fff;
 }
 
-/* line 13, ../sass/components/global/_main.scss */
+/* line 5, ../sass/components/global/_main.scss */
+body.page-pdi-home {
+  background: #e8ebf1;
+}
+
+/* line 9, ../sass/components/global/_main.scss */
 #header {
   padding-top: 15px;
   background: url(../images/flor.png) no-repeat right -35px bottom -37px #d4cfbb;
@@ -1930,12 +1920,12 @@ body {
   padding-bottom: 20px;
 }
 
-/* line 20, ../sass/components/global/_main.scss */
+/* line 16, ../sass/components/global/_main.scss */
 #content {
   padding: 30px 50px 50px 50px;
 }
 
-/* line 25, ../sass/components/global/_main.scss */
+/* line 21, ../sass/components/global/_main.scss */
 .sidebar-first #content {
   float: left;
   width: 65%;
@@ -1943,24 +1933,24 @@ body {
   margin-right: 0;
 }
 
-/* line 35, ../sass/components/global/_main.scss */
+/* line 31, ../sass/components/global/_main.scss */
 #main {
   padding-top: 4em;
 }
 
-/* line 39, ../sass/components/global/_main.scss */
+/* line 35, ../sass/components/global/_main.scss */
 #name-and-slogan {
   display: table;
   height: 120px;
 }
-/* line 42, ../sass/components/global/_main.scss */
+/* line 38, ../sass/components/global/_main.scss */
 #name-and-slogan h1.header__site-name {
   display: table-cell;
   vertical-align: middle;
   padding-left: 10px;
 }
 
-/* line 49, ../sass/components/global/_main.scss */
+/* line 45, ../sass/components/global/_main.scss */
 .sidebars {
   float: none;
   width: 30%;
@@ -1969,7 +1959,7 @@ body {
   padding-top: 30px;
 }
 
-/* line 57, ../sass/components/global/_main.scss */
+/* line 53, ../sass/components/global/_main.scss */
 .sidebar-first .region-sidebar-first {
   width: auto;
   float: none;
@@ -1977,14 +1967,14 @@ body {
   margin-right: 0;
 }
 
-/* line 64, ../sass/components/global/_main.scss */
+/* line 60, ../sass/components/global/_main.scss */
 .messages--pdi_message.pdi_message {
   background-image: none;
   border: none;
   background: #e6e0c9;
   text-align: center;
 }
-/* line 69, ../sass/components/global/_main.scss */
+/* line 65, ../sass/components/global/_main.scss */
 .messages--pdi_message.pdi_message ul li {
   list-style: none;
 }
@@ -2131,35 +2121,131 @@ a {
   background: #f3f3f3;
 }
 
-/* line 1, ../sass/components/global/_blocks.scss */
-#block-pdi-lines-pdi-calculate-progress {
-  height: 30px;
+/* line 3, ../sass/components/card/_main.scss */
+.page-pdi-home #page-title {
+  display: none;
 }
-/* line 3, ../sass/components/global/_blocks.scss */
-#block-pdi-lines-pdi-calculate-progress .progress_calcule {
-  display: block;
-  min-width: 250px;
-  float: right;
-  margin-right: 30px;
-}
-/* line 9, ../sass/components/global/_blocks.scss */
-#block-pdi-lines-pdi-calculate-progress .progress_calcule:after {
-  clear: both;
-}
-/* line 13, ../sass/components/global/_blocks.scss */
-#block-pdi-lines-pdi-calculate-progress .cta a {
-  display: block;
-  background: #d4cfbb;
-  padding: 10px 20px;
-  color: #fff;
+
+/* line 8, ../sass/components/card/_main.scss */
+.cards .card {
+  position: relative;
+  width: 45%;
+  height: 500px;
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 1px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  border-radius: 20px;
+  overflow: scroll;
 }
-/* line 24, ../sass/components/global/_blocks.scss */
-#block-pdi-lines-pdi-calculate-progress .cta a:hover {
-  background: #BAB7A8;
+/* line 21, ../sass/components/card/_main.scss */
+.cards .card .card_title,
+.cards .card .card_footer {
+  color: #707780;
+}
+/* line 26, ../sass/components/card/_main.scss */
+.cards .card .card_title {
+  margin-top: 0px;
+}
+/* line 30, ../sass/components/card/_main.scss */
+.cards .card.odd {
+  margin-right: 5%;
+}
+
+/* line 36, ../sass/components/card/_main.scss */
+.users_list .user_item {
+  padding: 5px;
+}
+/* line 38, ../sass/components/card/_main.scss */
+.users_list .user_item * {
+  display: inline-block;
+  width: 32%;
+  margin-right: 1%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 47, ../sass/components/card/_main.scss */
+.users_list .user_item:nth-child(odd) {
+  background: #e6e0c9;
+}
+/* line 50, ../sass/components/card/_main.scss */
+.users_list .user_item:nth-child(even) {
+  background: #f3f3f3;
+}
+
+/* line 56, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item {
+  padding: 5px;
+}
+/* line 58, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item * {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 66, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item.double .name {
+  width: 75%;
+  margin-right: 4%;
+}
+/* line 70, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item.double .progress {
+  width: 20%;
+}
+/* line 75, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item.single * {
+  width: 100%;
+  margin-right: 0;
+  text-align: left;
+}
+/* line 81, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item:nth-child(odd) {
+  background: #e6e0c9;
+}
+/* line 84, ../sass/components/card/_main.scss */
+.strategies_list .strategy_item:nth-child(even) {
+  background: #f3f3f3;
+}
+
+/* line 90, ../sass/components/card/_main.scss */
+.actions .btn {
+  margin: 20px auto;
+}
+/* line 92, ../sass/components/card/_main.scss */
+.actions .btn a {
+  width: 50%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 6px 12px;
+  background: #fb5d5d;
+  color: #fff;
+  text-decoration: none;
+}
+/* line 102, ../sass/components/card/_main.scss */
+.actions .search_box {
+  padding: 30px 0;
+}
+/* line 104, ../sass/components/card/_main.scss */
+.actions .search_box #edit-search-block-form--2 {
+  display: inline-block;
+  padding-bottom: 7px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  width: 50%;
+}
+/* line 113, ../sass/components/card/_main.scss */
+.actions .search_box #edit-submit {
+  display: inline-block;
+  border: none;
+  padding: 8px 18px;
+  background: #2cbbbb;
+  color: #fff;
 }
 
 /* SMACSS theme rules */

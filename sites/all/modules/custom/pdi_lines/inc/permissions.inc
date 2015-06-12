@@ -46,5 +46,22 @@ function user_can_calcule_progress($permission = null) {
 
   return false;
 }
+/**
+ * Callback that decide  if the user can see the dashboard.
+ **/
+function user_can_see_dashboard($permission = null){
+  global $user;
+  if ( $user->uid == 0 ) {
+    return false;
+  }
+
+  $duser = user_load($user->uid);
+  
+  if ($duser->status == 0) {
+    return false;
+  }
+
+  return true;
+}
 
 ?>

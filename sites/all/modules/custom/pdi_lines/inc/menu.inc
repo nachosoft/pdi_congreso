@@ -24,6 +24,12 @@ function pdi_lines_menu(){
     'access callback' => 'user_can_calcule_progress', 
     'type' => MENU_CALLBACK, 
   );
+  $items['pdi/home'] = array(
+    'title' => 'Resumen de Progreso', 
+    'page callback' => 'pdi_premise_menu_dashboard', 
+    'access callback' => 'user_can_see_dashboard', 
+    'type' => MENU_CALLBACK, 
+  );
   return $items;  
 }
 
@@ -107,4 +113,29 @@ function pdi_premise_menu_calcule($tid){
 
   // Got to the term page
   drupal_goto('taxonomy/term/' . $tid);
+}
+
+/**
+ * Create homepage to see the resume of the information.
+ **/
+function pdi_premise_menu_dashboard(){
+  global $user;
+
+  $progress = pdi_lines_get_progress($user->uid);
+
+  $users = pdi_lines_get_users($user->uid);
+
+  $premises = pdi_lines_get_premises($user->uid);
+
+  $actions = pdi_lines_get_actions($user->uid);
+
+  $vars = array(
+    'progress' => $progress, 
+    'actions' => $actions, 
+    'users' => $users, 
+    'premises' => $premises, 
+  );
+
+  $output = theme('pdi_lines_dashboard', $vars);
+  return $output;
 }
