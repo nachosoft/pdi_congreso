@@ -1,0 +1,23 @@
+.node-type-action-line.operador{
+  .tabs-primary.tabs.primary{
+    display: none;
+  }
+}
+
+.node-type-action-line{
+  .field-collection-view-links{
+    .edit a{
+      display: block;
+      background: #81CE97;
+      padding: 10px 20px;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 20px;
+    }
+    .edit a:hover{
+      background: #BAB7A8;
+    }
+  }
+}

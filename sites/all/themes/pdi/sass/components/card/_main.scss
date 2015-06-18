@@ -119,3 +119,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 1015px){
+  .cards{
+    .card{
+      display: block;
+      width: auto;
+    }
+    .card.odd{
+      margin-right: 0;
+    }
+  }
+}

@@ -4,3 +4,6 @@ include_once('inc/menu.inc');
 include_once('inc/data.inc');
 include_once('inc/block.inc');
 include_once('inc/theme.inc');
+include_once('inc/node-insert.inc');
+include_once('inc/form-alter.inc');
+include_once('inc/preprocess.inc');

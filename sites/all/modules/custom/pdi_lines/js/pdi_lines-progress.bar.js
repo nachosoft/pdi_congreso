@@ -39,7 +39,11 @@
             
 
             $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
-            $('.ppc-percents span').html(value - 1 + '%');
+            if (value == 0){
+              $('.ppc-percents span').html(value + '%');
+            } else {
+              $('.ppc-percents span').html(value - 1 + '%');
+            }
 
             if (value == max) {
               clearInterval(animate);

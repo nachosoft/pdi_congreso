@@ -66,3 +66,9 @@ body.page-pdi-home{
     list-style: none;
   }
 }
+
+@media only screen and (max-width: 500px){
+  #content{
+    padding: 30px 15px 50px 15px;
+  }
+}

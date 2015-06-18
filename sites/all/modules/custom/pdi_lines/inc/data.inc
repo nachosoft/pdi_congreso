@@ -2,17 +2,32 @@
 /**
  * Get the actions and percentages per line.
  * @Params: $node -> integer
- * @Return: $output -> array( aid => integer, percentage => integer, status => boolean )
+ * @Return: $output -> array( nid => integer, percentage => integer, status => boolean )
  **/
 function get_action_per_line($nid){
   $node = node_load($nid);
-  $actions = $node->field_topic[LANGUAGE_NONE];
-  $output = array();
-  foreach ($actions as &$action) {
-    $line_loaded = field_collection_item_load($action['value']);
-    $output[$action['value']]['aid'] = $action['value'];
-    $output[$action['value']]['percentage'] = $line_loaded->field_percentage[LANGUAGE_NONE][0]['value'];
-    $output[$action['value']]['status'] = $line_loaded->field_finished[LANGUAGE_NONE][0]['value'];
+
+
+  $sql = sprintf("SELECT entity_id FROM field_data_field_action_line WHERE field_action_line_target_id = %d AND bundle = 'actividad'" , $nid);
+  $results = db_query($sql);
+  $actions = array();
+
+  while(($row = $results->fetchAssoc())) {
+    $actions[$row['entity_id']] = $row['entity_id'];
+  } 
+  $output = array(
+    'progress' => 0, 
+  );
+
+  $nactions = 100/count($actions);
+
+  foreach ($actions as $key => $action) {
+    $activity = node_load($action); 
+    if ($activity->field_activity_finished[LANGUAGE_NONE][0]['value'] == 1) {
+      $output['progress'] = $output['progress'] + $nactions;
+    }
+    $output[$action]['status'] = $activity->field_activity_finished[LANGUAGE_NONE][0]['value'];
+    $output[$action]['area'] = $activity->field_area[LANGUAGE_NONE][0]['tid'];
   }
 
   return $output;
@@ -80,6 +95,24 @@ function pdi_premise_menu_calcule_progress($tids){
 }
 
 /**
+ * Get the tid of an area.
+ * @Params $tid -> int
+ * @Return $tnodes -> array([] => nid)
+ **/
+function pdi_area_get_nodes($tid){
+
+  $sql = sprintf("SELECT entity_id FROM field_data_field_premisa_area WHERE field_premisa_area_tid = %d AND bundle = 'premisa'", $tid);
+  $results = db_query($sql);
+  $tids = array();
+
+  while(($row = $results->fetchAssoc())) {
+    $tids[$row['entity_id']] = $row['entity_id'];
+  } 
+
+  return $tids;
+}
+
+/**
  * Get progress widget of the user area or global progress
  * @Params $uid -> int
  * @Return $progress -> html
@@ -114,7 +147,7 @@ function pdi_lines_get_progress($uid){
 /**
  * Create progress widget  
  **/
-function create_progress_widget($percent, $tname){
+function create_progress_widget($percent, $name){
 
   $progress_widget = '<h2 class="card_title">Progreso</h2>';
   $progress_widget .= '<div class="bar_container">
@@ -130,11 +163,11 @@ function create_progress_widget($percent, $tname){
     </div>
     </div>';
 
-  $progress_widget .= '<progress style="display: none" id="progress_bar" value="'  . intval($percent) . '" max="'. intval($percent) .'"></progress>';
+  $progress_widget .= '<progress style="display: none" id="progress_bar" value="'  . $percent . '" max="'. $percent .'"></progress>';
 
   $progress_widget .= '</div></div>';
 
-  $progress_widget .= '<div class="card_footer"><p>'. $tname .'</p></div>';
+  $progress_widget .= '<div class="card_footer"><p>'. $name .'</p></div>';
 
   drupal_add_js(drupal_get_path('module', 'pdi_lines') . '/js/pdi_lines-progress.bar.js');
 
@@ -272,4 +305,81 @@ function pdi_lines_get_actions($uid){
   }
 
   return $actions;
+}
+
+/**
+ * Get the strategies per user
+ * @Params $uid -> int
+ * @Return $user_strategy -> array( [tid] => tname )
+ **/
+function pdi_lines_get_user_strategies($uid){
+  $duser = user_load($uid);
+
+  $uarea = $duser->field_area[LANGUAGE_NONE][0]['tid']; 
+
+  $premises = pdi_line_get_area_premises($uarea);
+
+  $strategies = array(
+     '_none' => '- Seleccione un valor -', 
+  );
+  foreach ($premises as $key => $premise) {
+    $strategy_list = pdi_line_get_premise_strategies($premise);
+    foreach ($strategy_list as $tid=> $tname) {
+      $strategies[$tid] = $tname;
+    }
+  }
+  
+  return $strategies;
+}
+
+/**
+ * Get the premises per area
+ * @Params $tid -> int
+ * @Return $premises -> array( [] => tid )
+ **/ 
+function pdi_line_get_area_premises($tid){
+  $sql = sprintf("SELECT entity_id FROM field_data_field_premisa_area WHERE field_premisa_area_tid = %d AND bundle = 'premisa'", $tid);
+  $results = db_query($sql);
+  $premises = array();
+
+  while(($row = $results->fetchAssoc())) {
+    $premises[] = $row['entity_id'];
+  } 
+
+  return $premises;
+}
+
+/**
+ * Get the strategies per premise
+ * @Params $tid -> int
+ * @Return $strategies -> array( [] => tid )
+ **/ 
+function pdi_line_get_premise_strategies($tid){
+  $sql = sprintf("SELECT entity_id FROM field_revision_field__estrategia_premisa WHERE field__estrategia_premisa_tid = %d AND bundle = 'estrategia'", $tid);
+  $results = db_query($sql);
+  $strategies = array();
+
+  while(($row = $results->fetchAssoc())) {
+    $term = taxonomy_term_load($row['entity_id']);
+    $strategies[$row['entity_id']] = $term->name;
+  } 
+
+  return $strategies;
+}
+
+/**
+ * Calcule the progress of the area.
+ * @Params $nid -> int
+ * @Return $status -> boolean
+ **/
+function pdi_lines_progress_calcule($nid){
+  if (!isset($nid)){
+    return false;
+  }
+  $node = node_load($nid);
+  // Calcule the line progress
+  pdi_lines_calcule_progress($nid);
+
+  return true;
+
 }

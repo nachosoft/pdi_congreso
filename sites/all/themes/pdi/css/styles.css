@@ -1979,6 +1979,12 @@ body.page-pdi-home {
   list-style: none;
 }
 
+@media only screen and (max-width: 500px) {
+  /* line 71, ../sass/components/global/_main.scss */
+  #content {
+    padding: 30px 15px 50px 15px;
+  }
+}
 /* line 2, ../sass/components/global/_menus.scss */
 #secondary-menu a {
   color: #000;
@@ -2121,6 +2127,42 @@ a {
   background: #f3f3f3;
 }
 
+/* line 34, ../sass/components/global/_action_line.scss */
+#block-pdi-lines-pdi-progress {
+  text-align: center;
+}
+
+/* line 1, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress {
+  height: 30px;
+}
+/* line 3, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .progress_calcule {
+  display: block;
+  min-width: 250px;
+  float: right;
+  margin-right: 30px;
+}
+/* line 9, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .progress_calcule:after {
+  clear: both;
+}
+/* line 13, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .cta a {
+  display: block;
+  background: #d4cfbb;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 20px;
+}
+/* line 24, ../sass/components/global/_blocks.scss */
+#block-pdi-lines-pdi-calculate-progress .cta a:hover {
+  background: #BAB7A8;
+}
+
 /* line 3, ../sass/components/card/_main.scss */
 .page-pdi-home #page-title {
   display: none;
@@ -2246,6 +2288,38 @@ a {
   padding: 8px 18px;
   background: #2cbbbb;
   color: #fff;
+}
+
+@media only screen and (max-width: 1015px) {
+  /* line 125, ../sass/components/card/_main.scss */
+  .cards .card {
+    display: block;
+    width: auto;
+  }
+  /* line 129, ../sass/components/card/_main.scss */
+  .cards .card.odd {
+    margin-right: 0;
+  }
+}
+/* line 2, ../sass/components/lines/_main.scss */
+.node-type-action-line.operador .tabs-primary.tabs.primary {
+  display: none;
+}
+
+/* line 9, ../sass/components/lines/_main.scss */
+.node-type-action-line .field-collection-view-links .edit a {
+  display: block;
+  background: #81CE97;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 20px;
+}
+/* line 19, ../sass/components/lines/_main.scss */
+.node-type-action-line .field-collection-view-links .edit a:hover {
+  background: #BAB7A8;
 }
 
 /* SMACSS theme rules */
