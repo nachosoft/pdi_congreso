@@ -125,18 +125,18 @@ function pdi_lines_get_progress($uid){
   $progress = null;
 
   if (in_array('administrator', $duser_roles)) {
-    $uarea = $duser->field_area[LANGUAGE_NONE][0]['tid'];
+    $uarea = $duser->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
     $term = taxonomy_term_load($uarea);
-
-    $progress = create_progress_widget($term->field_progress_area[LANGUAGE_NONE][0]['value'], $term->name);
+    $progress = create_progress_widget($term->field_progreso_p[LANGUAGE_NONE][0]['value'], $term->name);
 
     return $progress;
 
   } elseif (in_array('Titular', $duser_roles) or in_array('Operador', $duser_roles)) {
     $uarea = $duser->field_area[LANGUAGE_NONE][0]['tid'];
     $term = taxonomy_term_load($uarea);
+    
 
-    $progress = create_progress_widget($term->field_progress_area[LANGUAGE_NONE][0]['value'], $term->name);
+    $progress = create_progress_widget($term->field_organo_tecnico[LANGUAGE_NONE][0]['value'], $term->name);
 
     return $progress;
   }
@@ -239,7 +239,8 @@ function create_users_list($tid){
  **/
 function pdi_lines_get_premises($uid){
   $duser = user_load($uid);
-  $tid = $duser->field_area[LANGUAGE_NONE][0]['tid'];
+  $otid = $duser->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
+  $term = taxonomy_term_load($otid);
 
   $sql = sprintf("SELECT entity_id FROM field_data_field_premisa_area WHERE field_premisa_area_tid = %d AND bundle = 'premisa'", $tid);
   $results = db_query($sql);
@@ -292,15 +293,15 @@ function pdi_lines_get_actions($uid){
     $search_box = render($search);
     $actions = '<div class="actions">';
     $actions .= '<div class="search_box">'.$search_box.'</div>';
-    $actions .= '<div class="btn"><a href="/node/add/action-line">Nueva Linea de Accíon?</a></div>';
-    $actions .= '<div class="btn"><a href="/pdi/lines/list">Lista de Lineas de Accíones</a></div>';
+    $actions .= '<div class="btn"><a href="/node/add/actividad">Nueva Actividad?</a></div>';
+    $actions .= '<div class="btn"><a href="/pdi/activity/list">Lista de Actividades</a></div>';
     $actions .= '</div>';
   } else {
     $search = module_invoke('search', 'block_view');
     $search_box = render($search);
     $actions = '<div class="actions">';
     $actions .= '<div class="search_box">'.$search_box.'</div>';
-    $actions .= '<div class="btn"><a href="/pdi/lines/list">Lista de Lineas de Accíones</a></div>';
+    $actions .= '<div class="btn"><a href="/pdi/activity/list">Lista de Actividades</a></div>';
     $actions .= '</div>';
   }
 

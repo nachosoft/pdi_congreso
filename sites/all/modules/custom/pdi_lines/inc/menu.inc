@@ -194,7 +194,8 @@ function pdi_premise_menu_dashboard(){
 
   $users = pdi_lines_get_users($user->uid);
 
-  $premises = pdi_lines_get_premises($user->uid);
+  //$premises = pdi_lines_get_premises($user->uid);
+  $premises = null;
 
   $actions = pdi_lines_get_actions($user->uid);
 
