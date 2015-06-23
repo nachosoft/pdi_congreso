@@ -163,7 +163,7 @@ function create_progress_widget($percent, $name){
     </div>
     </div>';
 
-  $progress_widget .= '<progress style="display: none" id="progress_bar" value="'  . $percent . '" max="'. $percent .'"></progress>';
+  $progress_widget .= '<progress style="display: none" id="progress_bar" value="'  . intval($percent) . '" max="'. intval($percent) .'"></progress>';
 
   $progress_widget .= '</div></div>';
 
