@@ -112,37 +112,6 @@ function pdi_area_get_nodes($tid){
   return $tids;
 }
 
-/**
- * Get progress widget of the user area or global progress
- * @Params $uid -> int
- * @Return $progress -> html
- **/
-function pdi_lines_get_progress($uid){
-  $duser = user_load($uid);
-
-  $duser_roles = $duser->roles;
-
-  $progress = null;
-
-  if (in_array('administrator', $duser_roles)) {
-    $uarea = $duser->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
-    $term = taxonomy_term_load($uarea);
-    $progress = create_progress_widget($term->field_progreso_p[LANGUAGE_NONE][0]['value'], $term->name);
-
-    return $progress;
-
-  } elseif (in_array('Titular', $duser_roles) or in_array('Operador', $duser_roles)) {
-    $uarea = $duser->field_area[LANGUAGE_NONE][0]['tid'];
-    $term = taxonomy_term_load($uarea);
-    
-
-    $progress = create_progress_widget($term->field_organo_tecnico[LANGUAGE_NONE][0]['value'], $term->name);
-
-    return $progress;
-  }
-
-  return $progress;
-}
 
 /**
  * Create progress widget  
@@ -177,33 +146,6 @@ function create_progress_widget($percent, $name){
 }
 
 /**
- * Get the users per area.
- * @Params $uid -> int
- * @Return $users -> html
- **/
-function pdi_lines_get_users($uid){
-  $duser = user_load($uid);
-
-  $duser_roles = $duser->roles;
-
-  $users = null;
-
-  if (in_array('administrator', $duser_roles)) {
-    $tid = $duser->field_area[LANGUAGE_NONE][0]['tid'];
-
-    $users = create_users_list($tid);
-
-  } elseif (in_array('Titular', $duser_roles) or in_array('Operador', $duser_roles)) {
-    $tid = $duser->field_area[LANGUAGE_NONE][0]['tid'];
-
-    $users = create_users_list($tid);
-
-  }
-
-  return $users;
-}
-
-/**
  * Create a list of the users in the area.
  **/
 function create_users_list($tid){
@@ -233,30 +175,6 @@ function create_users_list($tid){
 }
 
 /**
- * Get the premises per area.
- * @Params $uid -> int
- * @Return $premises -> html
- **/
-function pdi_lines_get_premises($uid){
-  $duser = user_load($uid);
-  $otid = $duser->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
-  $term = taxonomy_term_load($otid);
-
-  $sql = sprintf("SELECT entity_id FROM field_data_field_premisa_area WHERE field_premisa_area_tid = %d AND bundle = 'premisa'", $tid);
-  $results = db_query($sql);
-  $tids = array();
-
-  while(($row = $results->fetchAssoc())) {
-    $tids[] = $row['entity_id'];
-  } 
-
-  $premises = create_premises_list($tids);
-
-  return $premises;
-
-}
-
-/**
  * Create a list of the premises in the area.
  **/
 function create_premises_list($tids){
@@ -277,35 +195,6 @@ function create_premises_list($tids){
 
   return $premises;
   
-}
-
-/**
- * Get actios per user.
- * @Params $uid -> int
- * @Return $action -> html
- **/
-function pdi_lines_get_actions($uid){
-  $duser = user_load($uid);
-
-  $actions = NULL;
-  if (!in_array('Operador', $duser->roles)) {
-    $search = module_invoke('search', 'block_view');
-    $search_box = render($search);
-    $actions = '<div class="actions">';
-    $actions .= '<div class="search_box">'.$search_box.'</div>';
-    $actions .= '<div class="btn"><a href="/node/add/actividad">Nueva Actividad?</a></div>';
-    $actions .= '<div class="btn"><a href="/pdi/activity/list">Lista de Actividades</a></div>';
-    $actions .= '</div>';
-  } else {
-    $search = module_invoke('search', 'block_view');
-    $search_box = render($search);
-    $actions = '<div class="actions">';
-    $actions .= '<div class="search_box">'.$search_box.'</div>';
-    $actions .= '<div class="btn"><a href="/pdi/activity/list">Lista de Actividades</a></div>';
-    $actions .= '</div>';
-  }
-
-  return $actions;
 }
 
 /**
@@ -382,5 +271,344 @@ function pdi_lines_progress_calcule($nid){
   pdi_lines_calcule_progress($nid);
 
   return true;
+}
+
+/**
+ * Get user  structure 
+ * @Params $uid -> int
+ * @Return $structure -> array();
+ **/
+function pdi_lines_get_structure($uid){
+  if (is_int($uid)) {
+    return false;
+  }
+
+  $structure = array();
+
+  $duser = user_load($uid);
+
+  $structure['organo_tecnico']['tid'] = $duser->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
+
+  $structure['dependencia']['tid'] = $duser->field_dependencia[LANGUAGE_NONE][0]['tid'];
+
+  // Aqui se hace la magia.
+  $structure['area']['tid'] = $duser->field_area[LANGUAGE_NONE][0]['tid'];
+
+  return $structure;
+}
+
+/**
+ * Return the nodes of the of that ot.
+ * @Params $tid -> int;
+ * @Return $activities -> array();
+ **/
+
+function pdi_lines_get_nodes_ot($tid){
+  $sql = sprintf("SELECT entity_id FROM field_data_field_organo_tecnico WHERE field_organo_tecnico_tid = %d AND bundle = 'actividad'", $tid);
+  $results = db_query($sql);
+  $nodes = array();
+
+  while(($row = $results->fetchAssoc())) {
+    $nodes[$row['entity_id']]['nid'] = $row['entity_id'];
+  } 
+
+  $activities = array();
+  foreach ($nodes as $key => $node) {
+    $loaded_node = node_load($node['nid']);
+    if (isset($loaded_node->title)) {
+      $node['nombre'] = $loaded_node->title;
+    }
+    if (isset($loaded_node->field_action_line[LANGUAGE_NONE][0]['target_id'])) {
+      $node['linea'] = $loaded_node->field_action_line[LANGUAGE_NONE][0]['target_id'];
+    }
+    if (isset($loaded_node->field_eje_estrategico[LANGUAGE_NONE][0]['tid'])) {
+      $node['eje_estrategico'] = $loaded_node->field_eje_estrategico[LANGUAGE_NONE][0]['tid'];
+    }
+    if (isset($loaded_node->field_premisa[LANGUAGE_NONE][0]['tid'])) {
+      $node['premisa'] = $loaded_node->field_premisa[LANGUAGE_NONE][0]['tid'];
+    }
+    if (isset($loaded_node->field_estrategia[LANGUAGE_NONE][0]['tid'])) {
+      $node['estrategia'] = $loaded_node->field_estrategia[LANGUAGE_NONE][0]['tid'];
+    }
+
+    $activities[$node['nid']] = $node;
+  }
+
+  return $activities;
+}
+
+/**
+ * Create the data accordions for the homepage
+ * @Params $activities -> array();
+ * @Returns $content -> html;
+ **/
+function pdi_lines_create_content($activities){
+
+  $strategic_axis = pdi_lines_clean_stratetegic_axis($activities);
+
+  $premises = pdi_lines_clean_premises($activities);
+
+  $strategy = pdi_lines_clean_strategy($activities);
+
+  $lines = pdi_lines_clean_lines($activities);
+
+  $structure = pdi_lines_create_structure($activities, $strategic_axis, $premises, $strategy, $lines);
+
+  $content = pdi_lines_create_home_page($structure);
+
+  return $content;
 
 }
+
+// Get all the stratecig axis and clean the result 
+function pdi_lines_clean_stratetegic_axis($activities){
+
+  $strategic_axis = array();
+
+  foreach ($activities as $key => $activity) {
+    if (isset($activity['eje_estrategico'])){
+      $strategic_axis[$activity['eje_estrategico']] = $activity['eje_estrategico'];
+    }
+  }
+
+  return $strategic_axis;
+}
+
+// Clean all the premises 
+function pdi_lines_clean_premises($activities){
+
+  $premises = array();
+  foreach ($activities as $key => $activity) {
+    if (isset($activity['premisa'])){
+      $term = taxonomy_term_load($activity['premisa']);
+      $premises[$activity['premisa']]['tid'] = $activity['premisa'];
+      if ($term->field_premisa_eje[LANGUAGE_NONE][0]['tid'] > 0){
+        $premises[$activity['premisa']]['eje'] = $term->field_premisa_eje[LANGUAGE_NONE][0]['tid'];
+      }
+    }
+  }
+
+  return $premises;
+}
+
+// Clean all the strategies 
+function pdi_lines_clean_strategy($activities){
+  $strategies = array();
+
+  foreach ($activities as $key => $activity) {
+    if (isset($activity['estrategia'])){
+      $term = taxonomy_term_load($activity['estrategia']);
+      $strategies[$activity['estrategia']]['tid'] = $activity['estrategia'];
+      if ($term->field__estrategia_premisa[LANGUAGE_NONE][0]['tid'] > 0){
+        $strategies[$activity['estrategia']]['premisa'] = $term->field__estrategia_premisa[LANGUAGE_NONE][0]['tid'];
+      }
+    }
+  }
+
+  return $strategies;
+}
+
+// Clean all actions lines
+function pdi_lines_clean_lines($activities){
+  $lines = array();
+
+  foreach ($activities as $key => $activity) {
+    if ($activity['linea'] > 0){
+      $node = node_load($activity['linea']);
+      //print_r($node); exit;
+      $lines[$activity['linea']]['nid'] = $activity['linea'];
+      if (isset($node->field_percentage_action[LANGUAGE_NONE][0]['value'])){
+        $lines[$activity['linea']]['progreso'] = $node->field_percentage_action[LANGUAGE_NONE][0]['value'];
+      }
+      if (isset($node->field_eje_estrategico[LANGUAGE_NONE][0]['tid'])) {
+        $lines[$activity['linea']]['eje'] = $node->field_eje_estrategico[LANGUAGE_NONE][0]['tid'];
+      }
+      if (isset($node->field_premisa[LANGUAGE_NONE][0]['tid'])) {
+        $lines[$activity['linea']]['premisa'] = $node->field_premisa[LANGUAGE_NONE][0]['tid'];
+      }
+      if (isset($node->field_estrategia[LANGUAGE_NONE][0]['tid'])) {
+        $lines[$activity['linea']]['estrategia'] = $node->field_estrategia[LANGUAGE_NONE][0]['tid'];
+      }
+    }
+  }
+
+  return $lines;
+}
+
+// Create structure of the data; 
+function pdi_lines_create_structure($activities, $strategic_axis, $premises, $strategy, $lines){
+  $structure = array();
+
+  // set first and second level   
+  foreach ($strategic_axis as $key => $axi) {
+    $structure[$axi]['tid'] = $axi;
+
+    // inception time!!
+    foreach ($premises as $key => $premise) {
+      if ($axi == $premise['eje']){
+        $structure[$axi]['premisas'][$premise['tid']]['tid'] = $premise['tid'];
+      }
+    }
+  }
+
+  // Set  third level
+  foreach ($structure as $key => $struct) {
+    foreach ($struct['premisas'] as $key => $premisa) {
+      foreach ($strategy as $key => $strat) {
+        if ($strat['premisa'] == $premisa['tid']){
+          $structure[$struct['tid']]['premisas'][$premisa['tid']]['estrategias'][$strat['tid']]['tid'] = $strat['tid'];
+        }
+      }
+    }
+  }
+
+  // Set fourth level 
+  foreach ($structure as $key => $struct) {
+    foreach ($struct['premisas'] as $key => $premisa) {
+      foreach ($premisa['estrategias'] as $key => $strat) {
+        foreach ($lines as $key => $line) {
+          if ($line['estrategia'] == $strat['tid']) {
+            $structure[$struct['tid']]['premisas'][$premisa['tid']]['estrategias'][$strat['tid']]['lineas'][$line['nid']]['nid'] = $line['nid'];
+            $structure[$struct['tid']]['premisas'][$premisa['tid']]['estrategias'][$strat['tid']]['lineas'][$line['nid']]['progreso'] = $line['progreso'];
+          }
+        }
+      }
+    }
+  }
+
+  //print_r($activities); exit; 
+  // Set fifth level 
+  foreach ($structure as $key => $struct) {
+    foreach ($struct['premisas'] as $key => $premisa) {
+      foreach ($premisa['estrategias'] as $key => $strat) {
+        foreach ($strat['lineas'] as $key => $line) {
+          foreach ($activities as $key => $activity) {
+            if ($activity['linea'] == $line['nid']){
+              $structure[$struct['tid']]['premisas'][$premisa['tid']]['estrategias'][$strat['tid']]['lineas'][$line['nid']]['actividades'][$activity['nid']]['nid'] = $activity['nid'];
+              $structure[$struct['tid']]['premisas'][$premisa['tid']]['estrategias'][$strat['tid']]['lineas'][$line['nid']]['actividades'][$activity['nid']]['nombre'] = $activity['nombre'];
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return $structure;
+}
+
+/**
+ * Returns page with the lines data.
+ **/
+
+function pdi_lines_create_home_page($structure){
+  if (!isset($structure)) {
+    return false;
+  }
+
+  $content = '<div class="accordions level_1" data-level="1"><ul data-level="1">';
+  foreach ($structure as $key => $axi) {
+    $term = taxonomy_term_load($axi['tid']);
+    $content .= '<li class="accordion accordion-1" data-level="1">';
+    $content .= '<h2><span>Eje Estrategico: </span>'.$term->name.'</h2>'; 
+    if ($term->field_progreso_p[LANGUAGE_NONE][0]['value']) {
+      $content .= '<div class="progress">'.$term->field_progreso_p[LANGUAGE_NONE][0]['value'].'</div>'; 
+    }
+
+    $content .= '<ul class="l-2" data-level="2">';
+    foreach ($axi['premisas'] as $key => $premisa) {
+      $level_2 = pdi_lines_create_home_page_level_2($premisa);
+      $content .= $level_2;
+    }
+
+    $content .= '</ul>';
+    $content .= '</li>';
+  }
+  $content .='</div>';
+
+  return $content;
+}
+
+// Return level 2 of homepage
+function pdi_lines_create_home_page_level_2($premisa){
+  $term = taxonomy_term_load($premisa['tid']);
+  $content_l2 = ''; 
+  $content_l2 .= '<li class="accordion accordion-2" data-level="2">';
+  $content_l2 .= '<h2><span>Premisa: </span>'.$term->name.'</h2>';
+  if ($term->field_progreso[LANGUAGE_NONE][0]['value']) {
+    $content_l2 .= '<div class="progress">'.$term->field_progreso[LANGUAGE_NONE][0]['value'].'</div>'; 
+  }
+
+  $content_l2 .= '<ul class="l-3" data-level="3">';
+  foreach ($premisa['estrategias'] as $key => $estrategia) {
+    $level_3 = pdi_lines_create_home_page_level_3($estrategia);
+    $content_l2 .= $level_3;
+  }
+  $content_l2 .= '</ul';
+  $content_l2 .= '</li>';
+  
+  return $content_l2;
+}
+
+// Return level 3 of homepage
+function pdi_lines_create_home_page_level_3($estrategia){
+  $term = taxonomy_term_load($estrategia['tid']);
+  $content_l3 = ''; 
+  $content_l3 .= '<li class="accordion accordion-3" data-level="3">';
+  $content_l3 .= '<h2><span>Estrategia: </span>'.$term->name.'</h2>';
+  if ($term->field_progreso_p[LANGUAGE_NONE][0]['value']) {
+    $content_l3 .= '<div class="progress">'.$term->field_progreso_p[LANGUAGE_NONE][0]['value'].'</div>'; 
+  }
+
+  $content_l3 .= '<ul class="l-4" data-level="4">';
+  foreach ($estrategia['lineas'] as $key => $linea) {
+    $level_4 = pdi_lines_create_home_page_level_4($linea);
+    $content_l3 .= $level_4;
+  }
+
+  $content_l3 .= '</ul>';
+
+  $content_l3 .='</li>';
+
+  return $content_l3;
+}
+
+// Return level 4 of homepage
+function pdi_lines_create_home_page_level_4($linea){
+  $node = node_load($linea['nid']);
+  $content_l4 = ''; 
+  $content_l4 .= '<li class="accordion accordion-4" data-level="4">';
+  $content_l4 .= '<h2><span>Linea de Accion: </span>'.$node->title.'</h2>';
+  if ($node->field_percentage_action[LANGUAGE_NONE][0]['value']) {
+    $content_l4 .= '<div class="progress">'.$node->field_percentage_action[LANGUAGE_NONE][0]['value'].'</div>'; 
+  }
+
+  foreach ($linea['actividades'] as $key => $actividad) {
+    $level_5 = pdi_lines_create_home_page_level_5($actividad);
+    $content_l4 .= $level_5;
+  }
+
+  $content_l4 .= '</li>';
+
+  return $content_l4;
+}
+
+// Return level 5 of homepage 
+function pdi_lines_create_home_page_level_5($actividad){
+  $node = node_load($actividad['nid']);
+  
+  $content_l5 = '<div class="card activity">';
+  if ($node->field_activity_finished[LANGUAGE_NONE][0]['value'] == 0){
+    $content_l5 .= '<div class="edit"><a href="node/'.$actividad['nid'].'/edit">Editar</a></div>';
+  }else if($node->field_activity_finished[LANGUAGE_NONE][0]['value'] == 1){
+    $content_l5 .= '<div class="finished"><label>Terminada</label></div>';
+  }
+  $content_l5 .= '<h2 class="title">'.$node->title.'</h2>';
+  if (isset($node->field_activity_comments[LANGUAGE_NONE][0]['value'])){
+    $content_l5 .= '<div class="comments"><p>'.$node->field_activity_comments[LANGUAGE_NONE][0]['value'].'</p></div>';
+  }
+
+  $content_l5 .= '</div>';
+
+  return $content_l5;
+}
+

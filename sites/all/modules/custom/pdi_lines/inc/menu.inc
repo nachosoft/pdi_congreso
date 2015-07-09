@@ -25,8 +25,8 @@ function pdi_lines_menu(){
     'type' => MENU_CALLBACK, 
   );
   $items['pdi/home'] = array(
-    'title' => 'Resumen de Progreso', 
-    'page callback' => 'pdi_premise_menu_dashboard', 
+    'title' => 'Dashboard', 
+    'page callback' => 'pdi_lines_menu_dashboard', 
     'access callback' => 'user_can_see_dashboard', 
     'type' => MENU_CALLBACK, 
   );
@@ -187,24 +187,22 @@ function pdi_area_calcule_progress($tid){
 /**
  * Create homepage to see the resume of the information.
  **/
-function pdi_premise_menu_dashboard(){
+function pdi_lines_menu_dashboard(){
   global $user;
 
-  $progress = pdi_lines_get_progress($user->uid);
+  // Get structure
+  $structure = pdi_lines_get_structure($user->uid);
 
-  $users = pdi_lines_get_users($user->uid);
+  // get nodes 
+  $activities = pdi_lines_get_nodes_ot($structure['organo_tecnico']['tid']);
 
-  //$premises = pdi_lines_get_premises($user->uid);
-  $premises = null;
-
-  $actions = pdi_lines_get_actions($user->uid);
+  $content = pdi_lines_create_content($activities);
 
   $vars = array(
-    'progress' => $progress, 
-    'actions' => $actions, 
-    'users' => $users, 
-    'premises' => $premises, 
+    'content' => $content, 
   );
+
+  drupal_add_js(drupal_get_path('module', 'pdi_lines') . '/js/pdi_lines-homepage.accordions.js');
 
   $output = theme('pdi_lines_dashboard', $vars);
   return $output;
