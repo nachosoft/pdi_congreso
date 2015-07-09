@@ -21,6 +21,15 @@
   .l-3,
   .l-4,
   .l-5{
+    display: none;
+  }
+
+  .card.activity{
+    display: none;
+  }
+
+  .accordion-4.active .card.activity{
+    display: block;
   }
 
   .accordions .accordion-1.active,

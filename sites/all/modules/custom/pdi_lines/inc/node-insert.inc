@@ -39,9 +39,6 @@ function pdi_lines_node_presave($node) {
       $eje = $premise_term->field_premisa_eje;
       $node->field_eje_estrategico = $eje;
 
-
-
-
       break;
 
     case 'action_line':

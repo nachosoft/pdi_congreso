@@ -11,13 +11,14 @@
     _this = $(this);
     parent = _this.parent();
     level = parent.attr('data-level');
-    console.log(level);
-    if (parent.hasClass('acive')) {
+    level_ul = parseInt(level)+1;
+
+    if (parent.hasClass('active')) {
       parent.removeClass('active');
-      parent.next('h2').removeClass('visible');
+      parent.find('.l-'+level_ul).hide();
     }else{
       parent.addClass('active');
-      parent.next('h2').addClass('visible');
+      parent.find('.l-'+level_ul).show();
     };
   }
 })(jQuery);

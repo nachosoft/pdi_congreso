@@ -7,19 +7,25 @@ function pdi_lines_node_access($node, $op, $account) {
 
   // if its a action_line content type, user content types machine name.
   if ($type == 'actividad' && $op != 'create') {
-    if ($op == 'update') {
-      return NODE_ACCESS_IGNORE;
-    }
     // Get the ot fields of node and user 
     global $user;
+
+    if (in_array('Operador', $user->roles)) {
+      if (isset($node->field_activity_finished[LANGUAGE_NONE][0]['value']) &&  $node->field_activity_finished[LANGUAGE_NONE][0]['value'] == 1) {
+        if ($op == 'update') {
+          return NODE_ACCESS_DENY;
+        }
+      }
+    }
+    
     $obj_user = user_load($user->uid);
     $user_ot = $obj_user->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
     $node_ot = $node->field_organo_tecnico[LANGUAGE_NONE][0]['tid'];
+
     // If the user has the same technicall organ can see the node else no.
     if ($user_ot == $node_ot){
       return NODE_ACCESS_ALLOW;
-    }
-    else {
+    }else{
       return NODE_ACCESS_DENY;
     }
   }
