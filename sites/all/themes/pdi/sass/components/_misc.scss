@@ -155,10 +155,17 @@
 
     li {
       /* A simple method to get navigation links to appear in one line. */
-      float: left; /* LTR */
       padding: 0 10px 0 10px; /* LTR */
       list-style-type: none;
       list-style-image: none;
+    }
+    >li{
+      float: left; /* LTR */
+    }
+  }
+  .menu.clean{
+    li {
+      padding: 0; /* LTR */
     }
   }
 }

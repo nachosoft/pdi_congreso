@@ -1,0 +1,4 @@
+name = PDI Admin.
+description = "Provides an administration features for manage content"
+package = PDI
+core = 7.x
