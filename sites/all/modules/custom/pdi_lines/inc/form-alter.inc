@@ -14,7 +14,7 @@ function pdi_lines_form_node_form_alter(&$form, $form_state) {
     return;
   }
   
-  $user_strategy_field = pdi_lines_get_user_strategies($user->uid);
-  $form['field_estrategia'][LANGUAGE_NONE]['#options'] = $user_strategy_field;
+  //$user_strategy_field = pdi_lines_get_user_strategies($user->uid);
+  //$form['field_estrategia'][LANGUAGE_NONE]['#options'] = $user_strategy_field;
 
 }
