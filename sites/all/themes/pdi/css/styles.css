@@ -2432,8 +2432,9 @@ a {
 .page-pdi-home .accordions .accordion-4 h2,
 .page-pdi-home .accordions .accordion-5 h2 {
   padding-right: 60px;
+  font-size: 16px;
 }
-/* line 14, ../sass/components/home/_main.scss */
+/* line 15, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1 h2:hover,
 .page-pdi-home .accordions .accordion-2 h2:hover,
 .page-pdi-home .accordions .accordion-3 h2:hover,
@@ -2441,22 +2442,22 @@ a {
 .page-pdi-home .accordions .accordion-5 h2:hover {
   cursor: pointer;
 }
-/* line 20, ../sass/components/home/_main.scss */
+/* line 21, ../sass/components/home/_main.scss */
 .page-pdi-home .l-2,
 .page-pdi-home .l-3,
 .page-pdi-home .l-4,
 .page-pdi-home .l-5 {
   display: none;
 }
-/* line 27, ../sass/components/home/_main.scss */
+/* line 28, ../sass/components/home/_main.scss */
 .page-pdi-home .card.activity {
   display: none;
 }
-/* line 31, ../sass/components/home/_main.scss */
+/* line 32, ../sass/components/home/_main.scss */
 .page-pdi-home .accordion-4.active .card.activity {
   display: block;
 }
-/* line 40, ../sass/components/home/_main.scss */
+/* line 41, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1.active .visible,
 .page-pdi-home .accordions .accordion-2.active .visible,
 .page-pdi-home .accordions .accordion-3.active .visible,
@@ -2464,7 +2465,7 @@ a {
 .page-pdi-home .accordions .accordion-5.active .visible {
   display: block;
 }
-/* line 43, ../sass/components/home/_main.scss */
+/* line 44, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1.active .progress,
 .page-pdi-home .accordions .accordion-2.active .progress,
 .page-pdi-home .accordions .accordion-3.active .progress,
@@ -2472,85 +2473,85 @@ a {
 .page-pdi-home .accordions .accordion-5.active .progress {
   display: none;
 }
-/* line 49, ../sass/components/home/_main.scss */
+/* line 50, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions ul {
   padding: 0;
   margin: 0;
 }
-/* line 53, ../sass/components/home/_main.scss */
+/* line 54, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions ul li {
   list-style: none;
   display: block;
 }
-/* line 57, ../sass/components/home/_main.scss */
+/* line 58, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions h2 {
   margin: 0;
   padding: 10px 20px;
 }
-/* line 61, ../sass/components/home/_main.scss */
+/* line 62, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions h2 span {
-  font-size: 18px;
+  font-size: 14px;
   display: block;
 }
-/* line 65, ../sass/components/home/_main.scss */
+/* line 66, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .progress {
   display: none;
 }
-/* line 68, ../sass/components/home/_main.scss */
+/* line 69, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1 > h2 {
   background: #5D4037 url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
 }
-/* line 73, ../sass/components/home/_main.scss */
+/* line 74, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-2 > h2 {
   background: #795548 url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
   border-left: solid 5px #e8ebf1;
 }
-/* line 80, ../sass/components/home/_main.scss */
+/* line 81, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-3 > h2 {
   background: #D7CCC8 url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
   border-left: solid 10px #e8ebf1;
 }
-/* line 86, ../sass/components/home/_main.scss */
+/* line 87, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-4 > h2 {
   background: #607D8B url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
   border-left: solid 15px #e8ebf1;
 }
-/* line 92, ../sass/components/home/_main.scss */
+/* line 93, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1.active > h2 {
   background: #5D4037 url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 96, ../sass/components/home/_main.scss */
+/* line 97, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-2.active > h2 {
   background: #795548 url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 100, ../sass/components/home/_main.scss */
+/* line 101, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-3.active > h2 {
   background: #D7CCC8 url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 104, ../sass/components/home/_main.scss */
+/* line 105, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-4.active > h2 {
   background: #607D8B url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 108, ../sass/components/home/_main.scss */
+/* line 109, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-2,
 .page-pdi-home .accordions .accordion-3,
 .page-pdi-home .accordions .accordion-4,
 .page-pdi-home .accordions .accordion-5 {
   border-bottom: solid 3px #e8ebf1;
 }
-/* line 115, ../sass/components/home/_main.scss */
+/* line 116, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .card.activity {
   background: #B6B6B6;
   padding: 20px;
@@ -2558,11 +2559,11 @@ a {
   border-left: solid 20px #e8ebf1;
   color: #fff;
 }
-/* line 123, ../sass/components/home/_main.scss */
+/* line 124, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .card.activity h2 {
   margin-right: 120px;
 }
-/* line 127, ../sass/components/home/_main.scss */
+/* line 128, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .finished,
 .page-pdi-home .accordions .edit {
   display: inline-block;
@@ -2571,13 +2572,13 @@ a {
   float: right;
   box-sizing: border-box;
 }
-/* line 135, ../sass/components/home/_main.scss */
+/* line 136, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .finished {
   padding-top: 50px;
   background: url(../images/checkmark.png) no-repeat center top;
   background-size: 65px;
 }
-/* line 140, ../sass/components/home/_main.scss */
+/* line 141, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .edit a {
   display: inline-block;
   margin: 0 auto;
