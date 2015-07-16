@@ -2,7 +2,7 @@
 /**
  * Implements hook_form_alter().
  */
-/*function pdi_admin_form_alter(&$form, &$form_state, $form_id) {
+function pdi_admin_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'taxonomy_form_term'){
     switch ($form['#term']['vocabulary_machine_name']) {
       case 'premisa':
@@ -35,4 +35,4 @@
   }
   //$form['field_premisa_eje'][LANGUAGE_NONE]['#default_value'][0] = 13 ;
   //print_r($form['field_premisa_eje'][LANGUAGE_NONE]['#default_value']); exit;
-} */
+} 

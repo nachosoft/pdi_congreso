@@ -81,8 +81,8 @@ function pdi_admin_menu_pdi_2($tid){
   // Premisas
   $sql = sprintf("SELECT entity_id FROM field_data_field_premisa_eje WHERE field_premisa_eje_tid = %d AND bundle = 'premisa'" , $tid);
   $results = db_query($sql);
-  //$pdi_l2 = '<li class="name"><span>Premisas</span></li><li><a class="first_link" href="/admin/structure/taxonomy/premisa/add?axis='.$tid.'">Agregar Premisa</a></li>';
-  $pdi_l2 = '<li class="name"><span>Premisas</span></li><li><a class="first_link" href="/admin/structure/taxonomy/premisa/add">Agregar Premisa</a></li>';
+  $pdi_l2 = '<li class="name"><span>Premisas</span></li><li><a class="first_link" href="/admin/structure/taxonomy/premisa/add?axis='.$tid.'">Agregar Premisa</a></li>';
+  //$pdi_l2 = '<li class="name"><span>Premisas</span></li><li><a class="first_link" href="/admin/structure/taxonomy/premisa/add">Agregar Premisa</a></li>';
 
   while(($row = $results->fetchAssoc())) {
     $term = taxonomy_term_load($row['entity_id']);
@@ -100,8 +100,8 @@ function pdi_admin_menu_pdi_3($tid){
   // Estrategias
   $sql = sprintf("SELECT entity_id FROM field_data_field__estrategia_premisa WHERE field__estrategia_premisa_tid = %d AND bundle = 'estrategia'" , $tid);
   $results = db_query($sql);
-  //$pdi_l3 = '<li class="name"><span>Estrategias</span></li><li><a class="first_link" href="/admin/structure/taxonomy/estrategia/add?premise='.$tid.'">Agregar Estrategia</a></li>';
-  $pdi_l3 = '<li class="name"><span>Estrategias</span></li><li><a class="first_link" href="/admin/structure/taxonomy/estrategia/add">Agregar Estrategia</a></li>';
+  $pdi_l3 = '<li class="name"><span>Estrategias</span></li><li><a class="first_link" href="/admin/structure/taxonomy/estrategia/add?premise='.$tid.'">Agregar Estrategia</a></li>';
+  //$pdi_l3 = '<li class="name"><span>Estrategias</span></li><li><a class="first_link" href="/admin/structure/taxonomy/estrategia/add">Agregar Estrategia</a></li>';
 
   while(($row = $results->fetchAssoc())) {
     $term = taxonomy_term_load($row['entity_id']);
