@@ -45,7 +45,12 @@ function get_action_per_line($nid){
     'progress' => 0, 
   );
 
-  $nactions = $actions['n_percentage']/$actions['n_elements'];
+  if ($actions['n_elements'] > 0) {
+    $nactions = $actions['n_percentage']/$actions['n_elements'];
+  } else {
+    $nactions = 0;
+  }
+  
 
   foreach ($actions['activities'] as $key => $activity) {
     $node = node_load($activity['nid']);
@@ -54,8 +59,7 @@ function get_action_per_line($nid){
         $output['progress'] = $output['progress'] + $activity['percent'];
       }else{
         $output['progress'] = $output['progress'] + $nactions;
-      }
-      
+      } 
     }
     $output[$activity['nid']]['status'] = $node->field_activity_finished[LANGUAGE_NONE][0]['value'];
     $output[$activity['nid']]['area'] = $node->field_area[LANGUAGE_NONE][0]['tid'];
