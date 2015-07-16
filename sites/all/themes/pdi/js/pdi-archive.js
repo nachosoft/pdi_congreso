@@ -9,7 +9,7 @@
         });
 
         // Open the menu
-        $('#pdi_admin_menu li.container a, #pdi_admin_menu li.container span').click(function(event) {
+        $('#pdi_admin_menu li.container > a, #pdi_admin_menu li.container > span').click(function(event) {
           event.preventDefault();
           if ($(this).parent().hasClass('active')) {
             $(this).parent().removeClass('active');
