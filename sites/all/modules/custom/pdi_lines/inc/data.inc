@@ -7,27 +7,58 @@
 function get_action_per_line($nid){
   $node = node_load($nid);
 
-
   $sql = sprintf("SELECT entity_id FROM field_data_field_action_line WHERE field_action_line_target_id = %d AND bundle = 'actividad'" , $nid);
   $results = db_query($sql);
-  $actions = array();
+  $actions = array(
+    'n_elements' => 0, 
+    'n_percentage' => 100, 
+  );
 
   while(($row = $results->fetchAssoc())) {
-    $actions[$row['entity_id']] = $row['entity_id'];
+    $node = node_load($row['entity_id']); 
+    $actions['activities'][$row['entity_id']]['nid'] = $row['entity_id'];
+    $actions['activities'][$row['entity_id']]['title'] = $node->title;
+    $actions['activities'][$row['entity_id']]['finish'] = $node->field_activity_finished[LANGUAGE_NONE][0]['value'];
+    if (isset($node->field_porcentaje_de_actividad[LANGUAGE_NONE][0]['value'])){
+      if ($node->field_porcentaje_de_actividad[LANGUAGE_NONE][0]['value'] > 0 ) {
+        $actions['n_percentage'] = $actions['n_percentage'] - $node->field_porcentaje_de_actividad[LANGUAGE_NONE][0]['value'];
+      }
+      $actions['activities'][$row['entity_id']]['percent'] = $node->field_porcentaje_de_actividad[LANGUAGE_NONE][0]['value'];
+    } else {
+      $actions['activities'][$row['entity_id']]['percent'] = 0;
+      $actions['n_elements'] = $actions['n_elements'] + 1;
+    }
   } 
+
+  if ($actions['n_percentage'] <= 0) {
+    $message = 'El porcentaje de los elementos ingresados es mayor al 100%  >>>>>> ';
+
+    foreach ($actions['activities'] as $key => $activity) {
+      $message .= '['.$activity['title'] . ' -> ' .$activity['percent'].'%  ]  ';
+    }
+    
+    drupal_set_message(t($message), 'error', FALSE);
+    return; 
+  }
+
   $output = array(
     'progress' => 0, 
   );
 
-  $nactions = 100/count($actions);
+  $nactions = $actions['n_percentage']/$actions['n_elements'];
 
-  foreach ($actions as $key => $action) {
-    $activity = node_load($action); 
-    if ($activity->field_activity_finished[LANGUAGE_NONE][0]['value'] == 1) {
-      $output['progress'] = $output['progress'] + $nactions;
+  foreach ($actions['activities'] as $key => $activity) {
+    $node = node_load($activity['nid']);
+    if ($activity['finish'] == 1) {
+      if ($activity['percent'] > 0){
+        $output['progress'] = $output['progress'] + $activity['percent'];
+      }else{
+        $output['progress'] = $output['progress'] + $nactions;
+      }
+      
     }
-    $output[$action]['status'] = $activity->field_activity_finished[LANGUAGE_NONE][0]['value'];
-    $output[$action]['area'] = $activity->field_area[LANGUAGE_NONE][0]['tid'];
+    $output[$activity['nid']]['status'] = $node->field_activity_finished[LANGUAGE_NONE][0]['value'];
+    $output[$activity['nid']]['area'] = $node->field_area[LANGUAGE_NONE][0]['tid'];
   }
 
   return $output;
