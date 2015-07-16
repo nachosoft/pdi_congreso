@@ -19,7 +19,7 @@ function pdi_admin_menu_structure($term_name){
   $terms = pdi_admin_taxonomy_vocabulary_load($term_name);
   $structure = '<ul class="l2"><li class="name"><span>Órganos Técnicos</span></li><li><a class="first_link" href="/admin/structure/taxonomy/organo_tecnico/add">Agregar Órgano Técnico</a></li>';
   foreach ($terms as $key => $term) {
-    $structure .= '<li><a href="taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
+    $structure .= '<li><a href="/taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
 
     $structure .= pdi_admin_menu_structure_2($term->tid);
     $structure .= '</ul></li>';
@@ -37,7 +37,7 @@ function pdi_admin_menu_structure_2($tid){
 
   while(($row = $results->fetchAssoc())) {
     $term = taxonomy_term_load($row['entity_id']);
-    $structure_l2 .= '<li><a href="taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a><ul>';
+    $structure_l2 .= '<li><a href="/taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a><ul>';
 
     $structure_l2 .= pdi_admin_menu_structure_3($row['entity_id']);
     $structure_l2 .= '</ul></li>';
@@ -55,7 +55,7 @@ function pdi_admin_menu_structure_3($tid){
 
   while(($row = $results->fetchAssoc())) {
     $term = taxonomy_term_load($row['entity_id']);
-    $structure_l3 .= '<li><a href="taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a></li>';
+    $structure_l3 .= '<li><a href="/taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a></li>';
   } 
 
   return $structure_l3;
@@ -67,7 +67,7 @@ function pdi_admin_menu_pdi($term_name){
   $terms = pdi_admin_taxonomy_vocabulary_load($term_name);
   $structure = '<ul class="l2"><li class="name"><span>Ejes Estrategicos</span></li><li><a class="first_link" href="/admin/structure/taxonomy/eje_estrategico/add">Agregar eje Estrategico</a></li>';
   foreach ($terms as $key => $term) {
-    $structure .= '<li><a href="taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
+    $structure .= '<li><a href="/taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
 
     $structure .= pdi_admin_menu_pdi_2($term->tid);
     $structure .= '</ul></li>';
@@ -86,7 +86,7 @@ function pdi_admin_menu_pdi_2($tid){
 
   while(($row = $results->fetchAssoc())) {
     $term = taxonomy_term_load($row['entity_id']);
-    $pdi_l2 .= '<li><a href="taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a><ul>';
+    $pdi_l2 .= '<li><a href="/taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a><ul>';
 
     $pdi_l2 .= pdi_admin_menu_pdi_3($row['entity_id']);
     $pdi_l2 .= '</ul></li>';
@@ -105,7 +105,7 @@ function pdi_admin_menu_pdi_3($tid){
 
   while(($row = $results->fetchAssoc())) {
     $term = taxonomy_term_load($row['entity_id']);
-    $pdi_l3 .= '<li><a href="taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a><ul>';
+    $pdi_l3 .= '<li><a href="/taxonomy/term/'.$row['entity_id'].'">'.$term->name.'</a><ul>';
 
     $pdi_l3 .= pdi_admin_menu_pdi_4($row['entity_id']);
     $pdi_l3 .= '</ul></li>';

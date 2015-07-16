@@ -195,7 +195,6 @@ function pdi_lines_menu_dashboard(){
 
   // get nodes 
   $activities = pdi_lines_get_nodes_ot($structure['organo_tecnico']['tid']);
-
   $content = pdi_lines_create_content($activities);
 
   $vars = array(
