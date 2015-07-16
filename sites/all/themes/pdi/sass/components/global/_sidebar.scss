@@ -1,0 +1,89 @@
+#archive{
+  width: 30%;
+  height: 100vh;
+  float: left;
+  background: #7D7D7E;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: scroll;
+
+  #pdi_admin_menu{
+    color: #fff;
+    a{
+      color: #fff;
+    }
+    .container > a{
+      text-decoration: none;
+    }
+    ul {
+      padding-left: 0px;
+    }
+
+    ul li{
+      list-style: none;
+      padding: 10px 0 10px 30px;
+    }
+
+    li.container{
+      background: url('../images/folder-plus.png') no-repeat top 10px left;
+      background-size: 25px;
+    }
+
+    li.container.active{
+      background: url('../images/folder-remove.png') no-repeat top 10px left;
+      background-size: 25px;
+    }
+
+    li.file{
+      background: url('../images/label.png') no-repeat top 10px left;
+      background-size: 25px;
+    }
+
+    li.name.file{
+      background: url('../images/bank.png') no-repeat top 10px left;
+      background-size: 25px;
+    }
+
+    li.container:hover{
+      cursor: pointer;
+    }
+
+    ul ul{
+      display: none;
+    }
+
+    li.container.active > ul{
+      display: block;
+    }
+
+  }
+}
+#page{
+  width: 70%;
+  float: right;
+}
+
+
+
+
+/*.sidebar-inactive{
+  #archive{
+    display: none;
+  }
+  #page{
+    width: 100%;
+    float: none;
+  }
+}
+
+.sidebar-active{
+  #archive{
+    width: 30%;
+    height: 100vh;
+    float: left;
+  }
+  #page{
+    width: 70%;
+    float: right;
+  }
+}*/

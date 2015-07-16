@@ -65,13 +65,18 @@ function pdi_admin_menu_structure_3($tid){
 function pdi_admin_menu_pdi($term_name){
   // Ejes estrategicos
   $terms = pdi_admin_taxonomy_vocabulary_load($term_name);
-  $structure = '<ul class="l2"><li class="name"><span>Ejes Estrategicos</span></li><li><a class="first_link" href="/admin/structure/taxonomy/eje_estrategico/add">Agregar eje Estrategico</a></li>';
+  $structure = '<ul class="l2"><li class="name"><span>Ejes Estrategicos</span></li>
+                <li><a class="first_link" href="/admin/structure/taxonomy/eje_estrategico/add">Agregar eje Estrategico</a></li>
+                <li><a href="#">Ver menu PDI</a></li>
+                <div class="inner_menu_wrapper">';
   foreach ($terms as $key => $term) {
     $structure .= '<li><a href="/taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
 
     $structure .= pdi_admin_menu_pdi_2($term->tid);
     $structure .= '</ul></li>';
   }
+
+  $structure .= '</div>';
   
   return $structure; 
 }

@@ -7,6 +7,14 @@
  * @see https://drupal.org/node/1728148
  */
 ?>
+<?php if($page['archive']): ?>
+  <div id="archive">
+    <div class="archive_inner">
+      <?php print render($page['archive']); ?>      
+    </div>
+  </div>
+<?php endif; ?>
+
 
 <div id="page">
 

@@ -2022,95 +2022,13 @@ body.page-pdi-home {
   text-decoration: underline;
 }
 
-/* line 28, ../sass/components/global/_menus.scss */
-#pdi_admin_menu {
-  font-family: sans-serif;
-  list-style: none;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-}
-/* line 34, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu > li {
-  float: left;
-}
-/* line 36, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu > li span:hover {
-  cursor: pointer;
-}
-/* line 40, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu ul {
-  padding: 0;
-  z-index: 99;
-}
-/* line 45, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li > ul {
-  width: 100%;
-}
-/* line 49, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu > li {
-  margin-right: 20px;
-  min-width: 220px;
-  position: relative;
-}
-/* line 54, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu > li span {
-  text-align: center;
-}
-/* line 59, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li a,
-#pdi_admin_menu .menu li span {
-  background: #202020;
-  color: #FFF;
-  display: block;
-  border: 1px solid;
-  padding: 10px 12px;
-  text-decoration: none;
-}
-/* line 69, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li a:hover {
-  background: #0074bd;
-}
-/* line 72, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li a.first_link {
-  background: #00BD4F;
-}
-/* line 75, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li.name span {
-  background: #BD6200;
-}
-/* line 78, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li ul {
-  display: none;
-  position: absolute;
-  min-width: 140px;
-}
-/* line 83, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li:hover > ul {
-  display: block;
-}
-/* line 86, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li ul li {
-  position: relative;
-}
-/* line 90, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li ul li ul {
-  right: -140px;
-  top: 0;
-}
-/* line 94, ../sass/components/global/_menus.scss */
-#pdi_admin_menu .menu li ul li > ul {
-  width: 100%;
-  right: -100%;
-}
-
 @media only screen and (max-width: 1015px) {
-  /* line 104, ../sass/components/global/_menus.scss */
+  /* line 31, ../sass/components/global/_menus.scss */
   #admin-menu {
     display: none;
   }
 
-  /* line 107, ../sass/components/global/_menus.scss */
+  /* line 34, ../sass/components/global/_menus.scss */
   #page {
     padding-top: 0;
   }
@@ -2588,6 +2506,97 @@ a {
   text-decoration: none;
 }
 
+/* line 1, ../sass/components/global/_sidebar.scss */
+#archive {
+  width: 30%;
+  height: 100vh;
+  float: left;
+  background: #7D7D7E;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+/* line 10, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu {
+  color: #fff;
+}
+/* line 12, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu a {
+  color: #fff;
+}
+/* line 15, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu .container > a {
+  text-decoration: none;
+}
+/* line 18, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu ul {
+  padding-left: 0px;
+}
+/* line 22, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu ul li {
+  list-style: none;
+  padding: 10px 0 10px 30px;
+}
+/* line 27, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu li.container {
+  background: url("../images/folder-plus.png") no-repeat top 10px left;
+  background-size: 25px;
+}
+/* line 32, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu li.container.active {
+  background: url("../images/folder-remove.png") no-repeat top 10px left;
+  background-size: 25px;
+}
+/* line 37, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu li.file {
+  background: url("../images/label.png") no-repeat top 10px left;
+  background-size: 25px;
+}
+/* line 42, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu li.name.file {
+  background: url("../images/bank.png") no-repeat top 10px left;
+  background-size: 25px;
+}
+/* line 47, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu li.container:hover {
+  cursor: pointer;
+}
+/* line 51, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu ul ul {
+  display: none;
+}
+/* line 55, ../sass/components/global/_sidebar.scss */
+#archive #pdi_admin_menu li.container.active > ul {
+  display: block;
+}
+
+/* line 61, ../sass/components/global/_sidebar.scss */
+#page {
+  width: 70%;
+  float: right;
+}
+
+/*.sidebar-inactive{
+  #archive{
+    display: none;
+  }
+  #page{
+    width: 100%;
+    float: none;
+  }
+}
+
+.sidebar-active{
+  #archive{
+    width: 30%;
+    height: 100vh;
+    float: left;
+  }
+  #page{
+    width: 70%;
+    float: right;
+  }
+}*/
 /* SMACSS theme rules */
 /* @import "theme-A"; */
 /* @import "theme-B"; */
