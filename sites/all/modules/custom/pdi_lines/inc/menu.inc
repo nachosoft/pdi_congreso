@@ -30,6 +30,12 @@ function pdi_lines_menu(){
     'access callback' => 'user_can_see_dashboard', 
     'type' => MENU_CALLBACK, 
   );
+  $items['linea_accion/%/actividades'] = array(
+    'page callback' => 'pdi_lines_menu_activity_list', 
+    'page arguments' => array(1), 
+    'access arguments' => array('ver listado de actividades'),
+    'type' => MENU_CALLBACK, 
+  );
   return $items;  
 }
 
@@ -206,3 +212,36 @@ function pdi_lines_menu_dashboard(){
   $output = theme('pdi_lines_dashboard', $vars);
   return $output;
 }
+
+// Call back para ver el listado de actividades por linea de accion.
+function pdi_lines_menu_activity_list($nid){
+
+  if (!isset($nid) or $nid <= 0 ){
+    drupal_access_denied();
+    return;
+  }
+  $node = node_load($nid);
+
+  $nodes = pdi_lines_activity_list($nid);
+
+  $action_line = node_view($node, 'teaser');
+
+  $rendered_action_line = drupal_render($action_line);
+
+  $output = '<h1 class="action_line_title_page">'.$node->title.'</h1>';
+  $output .= '<div class="action_line card">'.$rendered_action_line.'</div>';
+  $output .= '<div class="activities cards">';
+
+  foreach ($nodes as $key => $nod) {
+    $lnode = node_load($nod);
+    $activity = node_view($lnode, 'teaser');
+    $rendered_activity = drupal_render($activity);
+    $output .= '<div class="activity card">'.$rendered_activity.'</div>';
+  }
+
+  $output .= '</div>';
+
+  return $output;
+}
+
+

@@ -60,13 +60,14 @@
 }
 #page{
   width: 70%;
+  height: 100vh;
   float: right;
+  overflow: scroll;
 }
 
 
 
-
-/*.sidebar-inactive{
+.archive-inactive{
   #archive{
     display: none;
   }
@@ -76,14 +77,8 @@
   }
 }
 
-.sidebar-active{
+.archive-inactive{
   #archive{
-    width: 30%;
-    height: 100vh;
-    float: left;
+    display: block;
   }
-  #page{
-    width: 70%;
-    float: right;
-  }
-}*/
+}

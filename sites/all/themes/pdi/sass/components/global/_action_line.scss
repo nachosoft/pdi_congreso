@@ -34,3 +34,39 @@
 #block-pdi-lines-pdi-progress{
   text-align: center;
 }
+
+.page-linea-accion{
+  .breadcrumb{
+    display: none;
+  }
+  .action_line.card{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+    padding: 10px;
+    background: #e6e0c9;
+    border-radius: 1px;
+    text-align: left;
+
+    a{
+      color: #DC4F4F;
+    }
+  }
+
+  .activity.card{
+    padding: 0;
+
+    >div{
+      padding: 10px;
+    }
+  }
+
+  .terminada{
+    border-top:solid 20px #4FDC87;
+  }
+
+  .no-terminada{
+    border-top:solid 20px #DCAF4F;
+  }
+}

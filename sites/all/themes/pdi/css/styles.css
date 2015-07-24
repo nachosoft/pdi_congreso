@@ -2141,6 +2141,42 @@ a {
   text-align: center;
 }
 
+/* line 39, ../sass/components/global/_action_line.scss */
+.page-linea-accion .breadcrumb {
+  display: none;
+}
+/* line 42, ../sass/components/global/_action_line.scss */
+.page-linea-accion .action_line.card {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+  padding: 10px;
+  background: #e6e0c9;
+  border-radius: 1px;
+  text-align: left;
+}
+/* line 52, ../sass/components/global/_action_line.scss */
+.page-linea-accion .action_line.card a {
+  color: #DC4F4F;
+}
+/* line 57, ../sass/components/global/_action_line.scss */
+.page-linea-accion .activity.card {
+  padding: 0;
+}
+/* line 60, ../sass/components/global/_action_line.scss */
+.page-linea-accion .activity.card > div {
+  padding: 10px;
+}
+/* line 65, ../sass/components/global/_action_line.scss */
+.page-linea-accion .terminada {
+  border-top: solid 20px #4FDC87;
+}
+/* line 69, ../sass/components/global/_action_line.scss */
+.page-linea-accion .no-terminada {
+  border-top: solid 20px #DCAF4F;
+}
+
 /* line 1, ../sass/components/global/_blocks.scss */
 #block-pdi-lines-pdi-calculate-progress {
   height: 30px;
@@ -2177,39 +2213,45 @@ a {
   display: none;
 }
 
-/* line 8, ../sass/components/card/_main.scss */
+/* line 7, ../sass/components/card/_main.scss */
+.cards {
+  display: flex;
+}
+/* line 9, ../sass/components/card/_main.scss */
 .cards .card {
   position: relative;
-  width: 45%;
-  height: 500px;
-  display: inline-block;
-  margin-bottom: 30px;
+  width: 48%;
+  height: auto;
+  margin: 10px 1% 30px 1%;
   padding: 10px;
   background: #fff;
   border-radius: 1px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  overflow: scroll;
+  text-align: left;
 }
-/* line 21, ../sass/components/card/_main.scss */
+/* line 20, ../sass/components/card/_main.scss */
 .cards .card .card_title,
 .cards .card .card_footer {
   color: #707780;
 }
-/* line 26, ../sass/components/card/_main.scss */
+/* line 25, ../sass/components/card/_main.scss */
+.cards .card h2 {
+  margin: 0;
+}
+/* line 29, ../sass/components/card/_main.scss */
 .cards .card .card_title {
   margin-top: 0px;
 }
-/* line 30, ../sass/components/card/_main.scss */
+/* line 33, ../sass/components/card/_main.scss */
 .cards .card.odd {
   margin-right: 5%;
 }
 
-/* line 36, ../sass/components/card/_main.scss */
+/* line 39, ../sass/components/card/_main.scss */
 .users_list .user_item {
   padding: 5px;
 }
-/* line 38, ../sass/components/card/_main.scss */
+/* line 41, ../sass/components/card/_main.scss */
 .users_list .user_item * {
   display: inline-block;
   width: 32%;
@@ -2218,55 +2260,55 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 47, ../sass/components/card/_main.scss */
+/* line 50, ../sass/components/card/_main.scss */
 .users_list .user_item:nth-child(odd) {
   background: #e6e0c9;
 }
-/* line 50, ../sass/components/card/_main.scss */
+/* line 53, ../sass/components/card/_main.scss */
 .users_list .user_item:nth-child(even) {
   background: #f3f3f3;
 }
 
-/* line 56, ../sass/components/card/_main.scss */
+/* line 59, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item {
   padding: 5px;
 }
-/* line 58, ../sass/components/card/_main.scss */
+/* line 61, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item * {
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 66, ../sass/components/card/_main.scss */
+/* line 69, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item.double .name {
   width: 75%;
   margin-right: 4%;
 }
-/* line 70, ../sass/components/card/_main.scss */
+/* line 73, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item.double .progress {
   width: 20%;
 }
-/* line 75, ../sass/components/card/_main.scss */
+/* line 78, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item.single * {
   width: 100%;
   margin-right: 0;
   text-align: left;
 }
-/* line 81, ../sass/components/card/_main.scss */
+/* line 84, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item:nth-child(odd) {
   background: #e6e0c9;
 }
-/* line 84, ../sass/components/card/_main.scss */
+/* line 87, ../sass/components/card/_main.scss */
 .strategies_list .strategy_item:nth-child(even) {
   background: #f3f3f3;
 }
 
-/* line 90, ../sass/components/card/_main.scss */
+/* line 93, ../sass/components/card/_main.scss */
 .actions .btn {
   margin: 20px auto;
 }
-/* line 92, ../sass/components/card/_main.scss */
+/* line 95, ../sass/components/card/_main.scss */
 .actions .btn a {
   width: 50%;
   display: inline-block;
@@ -2276,11 +2318,11 @@ a {
   color: #fff;
   text-decoration: none;
 }
-/* line 102, ../sass/components/card/_main.scss */
+/* line 105, ../sass/components/card/_main.scss */
 .actions .search_box {
   padding: 30px 0;
 }
-/* line 104, ../sass/components/card/_main.scss */
+/* line 107, ../sass/components/card/_main.scss */
 .actions .search_box #edit-search-block-form--2 {
   display: inline-block;
   padding-bottom: 7px;
@@ -2290,7 +2332,7 @@ a {
   border-bottom: 1px solid #ddd;
   width: 50%;
 }
-/* line 113, ../sass/components/card/_main.scss */
+/* line 116, ../sass/components/card/_main.scss */
 .actions .search_box #edit-submit {
   display: inline-block;
   border: none;
@@ -2300,12 +2342,12 @@ a {
 }
 
 @media only screen and (max-width: 1015px) {
-  /* line 125, ../sass/components/card/_main.scss */
+  /* line 128, ../sass/components/card/_main.scss */
   .cards .card {
     display: block;
     width: auto;
   }
-  /* line 129, ../sass/components/card/_main.scss */
+  /* line 132, ../sass/components/card/_main.scss */
   .cards .card.odd {
     margin-right: 0;
   }
@@ -2392,84 +2434,90 @@ a {
   display: none;
 }
 /* line 50, ../sass/components/home/_main.scss */
+.page-pdi-home .accordions .accordion-4 a.linea_accion {
+  display: block;
+}
+/* line 55, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions ul {
   padding: 0;
   margin: 0;
 }
-/* line 54, ../sass/components/home/_main.scss */
+/* line 59, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions ul li {
   list-style: none;
   display: block;
 }
-/* line 58, ../sass/components/home/_main.scss */
+/* line 63, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions h2 {
   margin: 0;
   padding: 10px 20px;
 }
-/* line 62, ../sass/components/home/_main.scss */
+/* line 67, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions h2 span {
   font-size: 14px;
   display: block;
 }
-/* line 66, ../sass/components/home/_main.scss */
+/* line 71, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .progress {
   display: none;
 }
-/* line 69, ../sass/components/home/_main.scss */
+/* line 74, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1 > h2 {
   background: #5D4037 url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
 }
-/* line 74, ../sass/components/home/_main.scss */
+/* line 79, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-2 > h2 {
   background: #795548 url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
   border-left: solid 5px #e8ebf1;
 }
-/* line 81, ../sass/components/home/_main.scss */
+/* line 85, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-3 > h2 {
   background: #D7CCC8 url("../images/accordion-opener.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
   border-left: solid 10px #e8ebf1;
 }
-/* line 87, ../sass/components/home/_main.scss */
-.page-pdi-home .accordions .accordion-4 > h2 {
-  background: #607D8B url("../images/accordion-opener.png") no-repeat center right 10px;
+/* line 91, ../sass/components/home/_main.scss */
+.page-pdi-home .accordions .accordion-4 > h2,
+.page-pdi-home .accordions .accordion-4 > a {
+  background: #607D8B url("../images/link_arrow.png") no-repeat center right 10px;
   background-size: 50px;
   color: #fff;
   border-left: solid 15px #e8ebf1;
 }
-/* line 93, ../sass/components/home/_main.scss */
+/* line 98, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-1.active > h2 {
   background: #5D4037 url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 97, ../sass/components/home/_main.scss */
+/* line 102, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-2.active > h2 {
   background: #795548 url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 101, ../sass/components/home/_main.scss */
+/* line 106, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-3.active > h2 {
   background: #D7CCC8 url("../images/accordion-closer.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 105, ../sass/components/home/_main.scss */
-.page-pdi-home .accordions .accordion-4.active > h2 {
-  background: #607D8B url("../images/accordion-closer.png") no-repeat center right 10px;
+/* line 110, ../sass/components/home/_main.scss */
+.page-pdi-home .accordions .accordion-4.active > h2,
+.page-pdi-home .accordions .accordion-4.active > a {
+  background: #607D8B url("../images/link_arrow.png") no-repeat center right 10px;
   background-size: 50px;
 }
-/* line 109, ../sass/components/home/_main.scss */
+/* line 115, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .accordion-2,
 .page-pdi-home .accordions .accordion-3,
 .page-pdi-home .accordions .accordion-4,
 .page-pdi-home .accordions .accordion-5 {
   border-bottom: solid 3px #e8ebf1;
 }
-/* line 116, ../sass/components/home/_main.scss */
+/* line 122, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .card.activity {
   background: #B6B6B6;
   padding: 20px;
@@ -2477,11 +2525,11 @@ a {
   border-left: solid 20px #e8ebf1;
   color: #fff;
 }
-/* line 124, ../sass/components/home/_main.scss */
+/* line 130, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .card.activity h2 {
   margin-right: 120px;
 }
-/* line 128, ../sass/components/home/_main.scss */
+/* line 134, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .finished,
 .page-pdi-home .accordions .edit {
   display: inline-block;
@@ -2490,13 +2538,13 @@ a {
   float: right;
   box-sizing: border-box;
 }
-/* line 136, ../sass/components/home/_main.scss */
+/* line 142, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .finished {
   padding-top: 50px;
   background: url(../images/checkmark.png) no-repeat center top;
   background-size: 65px;
 }
-/* line 141, ../sass/components/home/_main.scss */
+/* line 147, ../sass/components/home/_main.scss */
 .page-pdi-home .accordions .edit a {
   display: inline-block;
   margin: 0 auto;
@@ -2573,30 +2621,26 @@ a {
 /* line 61, ../sass/components/global/_sidebar.scss */
 #page {
   width: 70%;
+  height: 100vh;
   float: right;
+  overflow: scroll;
 }
 
-/*.sidebar-inactive{
-  #archive{
-    display: none;
-  }
-  #page{
-    width: 100%;
-    float: none;
-  }
+/* line 71, ../sass/components/global/_sidebar.scss */
+.archive-inactive #archive {
+  display: none;
+}
+/* line 74, ../sass/components/global/_sidebar.scss */
+.archive-inactive #page {
+  width: 100%;
+  float: none;
 }
 
-.sidebar-active{
-  #archive{
-    width: 30%;
-    height: 100vh;
-    float: left;
-  }
-  #page{
-    width: 70%;
-    float: right;
-  }
-}*/
+/* line 81, ../sass/components/global/_sidebar.scss */
+.archive-inactive #archive {
+  display: block;
+}
+
 /* SMACSS theme rules */
 /* @import "theme-A"; */
 /* @import "theme-B"; */

@@ -7,6 +7,9 @@
     }
   };
   function accordions (event) {
+    if ($(this).parent().hasClass('linea_accion')) {
+      return;
+    };
     event.preventDefault();
     _this = $(this);
     parent = _this.parent();

@@ -611,24 +611,27 @@ function pdi_lines_create_home_page_level_3($estrategia){
 function pdi_lines_create_home_page_level_4($linea){
   $node = node_load($linea['nid']);
   $content_l4 = ''; 
-  $content_l4 .= '<li class="accordion accordion-4" data-level="4">';
+  $content_l4 .= '<li class="accordion accordion-4" data-level="4"><a class="linea_accion" href="/linea_accion/'.$linea['nid'].'/actividades">';
   $content_l4 .= '<h2><span>Linea de Accion: </span>'.$node->title.'</h2>';
   if ($node->field_percentage_action[LANGUAGE_NONE][0]['value']) {
     $content_l4 .= '<div class="progress">'.$node->field_percentage_action[LANGUAGE_NONE][0]['value'].'</div>'; 
   }
 
+  /* este es el ultimo nivel de las acciones. 
   foreach ($linea['actividades'] as $key => $actividad) {
     $level_5 = pdi_lines_create_home_page_level_5($actividad);
     $content_l4 .= $level_5;
   }
+  */
 
-  $content_l4 .= '</li>';
+  $content_l4 .= '</a></li>';
 
   return $content_l4;
 }
 
 // Return level 5 of homepage 
-function pdi_lines_create_home_page_level_5($actividad){
+// Ultimo nivel de los acordeones.
+/*function pdi_lines_create_home_page_level_5($actividad){
   $node = node_load($actividad['nid']);
   
   $content_l5 = '<div class="card activity">';
@@ -645,5 +648,19 @@ function pdi_lines_create_home_page_level_5($actividad){
   $content_l5 .= '</div>';
 
   return $content_l5;
+}*/
+
+
+// Return all the activities per action line
+function pdi_lines_activity_list($nid){
+  $sql = sprintf("SELECT entity_id FROM field_data_field_action_line WHERE field_action_line_target_id = %d AND bundle = 'actividad'", $nid);
+  $results = db_query($sql);
+  $nodes = array();
+
+  while(($row = $results->fetchAssoc())) {
+    $nodes[] = $row['entity_id'];
+  }
+
+  return $nodes; 
 }
 

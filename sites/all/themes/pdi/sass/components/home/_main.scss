@@ -46,6 +46,11 @@
     }
   }
 
+  .accordions .accordion-4{
+    a.linea_accion{
+      display:block;
+    }
+  }
   .accordions{ 
     ul{
       padding: 0;
@@ -73,7 +78,6 @@
     }
     .accordion-2 >h2{
       background: #795548 url('../images/accordion-opener.png') no-repeat center right 10px;
-      
       background-size:  50px;
       color: #fff;
       border-left: solid 5px #e8ebf1;
@@ -84,8 +88,9 @@
       color: #fff;
       border-left: solid 10px #e8ebf1;
     }
-    .accordion-4 >h2{
-      background: #607D8B url('../images/accordion-opener.png') no-repeat center right 10px;
+    .accordion-4 >h2,
+    .accordion-4 >a{
+      background: #607D8B url('../images/link_arrow.png') no-repeat center right 10px;
       background-size:  50px;
       color: #fff;
       border-left: solid 15px #e8ebf1;
@@ -102,8 +107,9 @@
       background: #D7CCC8 url('../images/accordion-closer.png') no-repeat center right 10px;
       background-size:  50px;
     }
-    .accordion-4.active >h2{
-      background: #607D8B url('../images/accordion-closer.png') no-repeat center right 10px;
+    .accordion-4.active >h2,
+    .accordion-4.active >a{
+      background: #607D8B url('../images/link_arrow.png') no-repeat center right 10px;
       background-size:  50px;
     }
     .accordion-2,

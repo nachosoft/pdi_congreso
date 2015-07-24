@@ -5,22 +5,25 @@
   }
 }
 .cards{
+  display: flex;
   .card{
     position: relative;
-    width: 45%;
-    height: 500px;
-    display: inline-block;
-    margin-bottom: 30px;
+    width: 48%;
+    height: auto;
+    margin: 10px 1% 30px 1%;
     padding: 10px;
     background: #fff;
     border-radius: 1px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    overflow: scroll;
+    text-align: left;
 
     .card_title,
     .card_footer{
       color: #707780;
+    }
+
+    h2{
+      margin: 0;
     }
 
     .card_title{

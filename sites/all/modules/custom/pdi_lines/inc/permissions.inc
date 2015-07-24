@@ -71,4 +71,16 @@ function user_can_see_dashboard($permission = null){
   return true;
 }
 
+/**
+ * Implements hook_permission().
+ */
+function pdi_lines_permission() {
+  return array(
+    'ver listado de actividades' =>  array(
+      'title' => t('Ver listado de actividades'),
+      'description' => t('Ver el listado de las actividades de cada linea de accion.'),
+    ),
+  );
+}
+
 ?>

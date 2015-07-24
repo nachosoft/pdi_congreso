@@ -16,7 +16,7 @@
 <?php endif; ?>
 
 
-<div id="page">
+<div id="page" <?php if($page['archive']): ?> <?php endif; ?>>
 
   <header class="header" id="header" role="banner">
 
