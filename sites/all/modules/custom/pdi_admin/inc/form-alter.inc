@@ -3,7 +3,6 @@
  * Implements hook_form_alter().
  */
 function pdi_admin_form_alter(&$form, &$form_state, $form_id) {
-  print_r($form); exit;
   if ($form_id == 'taxonomy_form_term'){
     switch ($form['#term']['vocabulary_machine_name']) {
       case 'premisa':

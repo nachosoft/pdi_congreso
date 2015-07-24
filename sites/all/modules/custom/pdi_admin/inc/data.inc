@@ -1,8 +1,8 @@
 <?php
 // Create menu for users
 function pdi_admin_block_menu_construct(){
-  $structure_menu = pdi_admin_menu_structure('organo_tecnico');
-  $pdi_menu = pdi_admin_menu_pdi('eje_estrategico');
+  $structure_menu = pdi_admin_menu_structure(5);
+  $pdi_menu = pdi_admin_menu_pdi(7);
   $add_content_menu = pdi_admin_menu_content();
 
   $menu  = '<div id="pdi_admin_menu"><ul class="menu clean l1">';
@@ -15,8 +15,9 @@ function pdi_admin_block_menu_construct(){
 }
 
 // Create estructure menu.
-function pdi_admin_menu_structure($term_name){
-  $terms = pdi_admin_taxonomy_vocabulary_load($term_name);
+function pdi_admin_menu_structure($vid){
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vid));
+  //$terms = pdi_admin_taxonomy_vocabulary_load($vid);
   $structure = '<ul class="l2"><li class="name"><span>Órganos Técnicos</span></li><li><a class="first_link" href="/admin/structure/taxonomy/organo_tecnico/add">Agregar Órgano Técnico</a></li>';
   foreach ($terms as $key => $term) {
     $structure .= '<li><a href="/taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
@@ -62,13 +63,12 @@ function pdi_admin_menu_structure_3($tid){
 }
 
 // Contruct  pdi menu. 
-function pdi_admin_menu_pdi($term_name){
+function pdi_admin_menu_pdi($vid){
   // Ejes estrategicos
-  $terms = pdi_admin_taxonomy_vocabulary_load($term_name);
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vid));
+  //$terms = pdi_admin_taxonomy_vocabulary_load($term_name);
   $structure = '<ul class="l2"><li class="name"><span>Ejes Estrategicos</span></li>
-                <li><a class="first_link" href="/admin/structure/taxonomy/eje_estrategico/add">Agregar eje Estrategico</a></li>
-                <li><a href="#">Ver menu PDI</a></li>
-                <div class="inner_menu_wrapper">';
+                <li><a class="first_link" href="/admin/structure/taxonomy/eje_estrategico/add">Agregar eje Estrategico</a></li>';
   foreach ($terms as $key => $term) {
     $structure .= '<li><a href="/taxonomy/term/'.$term->tid.'">'.$term->name.'</a><ul>';
 
@@ -76,7 +76,6 @@ function pdi_admin_menu_pdi($term_name){
     $structure .= '</ul></li>';
   }
 
-  $structure .= '</div>';
   
   return $structure; 
 }
@@ -100,7 +99,7 @@ function pdi_admin_menu_pdi_2($tid){
   return $pdi_l2;
 }
 
-// Create second leve structure menu
+// Create second leve pdi menu
 function pdi_admin_menu_pdi_3($tid){
   // Estrategias
   $sql = sprintf("SELECT entity_id FROM field_data_field__estrategia_premisa WHERE field__estrategia_premisa_tid = %d AND bundle = 'estrategia'" , $tid);
@@ -146,11 +145,4 @@ function pdi_admin_menu_content(){
   return $content;
 }
 
-// Contruct structure.
-function pdi_admin_taxonomy_vocabulary_load($taxonomi_name){
-  $vocabulary = taxonomy_vocabulary_machine_name_load($taxonomi_name);
-  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-
-  return $terms;
-}
 
