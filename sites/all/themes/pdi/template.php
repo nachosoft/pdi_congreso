@@ -133,7 +133,7 @@ function pdi_preprocess_block(&$variables, $hook) {
 
 function pdi_preprocess_html(&$vars){
   if ($vars['user']) { 
-    if(in_array('admin', $vars['user']->roles) or in_array('developer', $vars['user']->roles) or user_access('ver estructura pdi'))){
+    if(in_array('admin', $vars['user']->roles) or in_array('developer', $vars['user']->roles) or user_access('ver estructura pdi')){
       $vars['classes_array'][] = 'archive-active'; 
     } else {
       $vars['classes_array'][] = 'archive-inactive'; 
