@@ -6,10 +6,10 @@ function pdi_admin_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'taxonomy_form_term'){
     switch ($form['#term']['vocabulary_machine_name']) {
       case 'premisa':
+        $axis = '';
         if (isset($_GET['axis'])){
           $axis = intval($_GET['axis']);
         }
-        print_r($axis); exit;
         if (isset($axis) && is_int($axis) && $axis > 0){
           if (array_key_exists($axis, $form['field_premisa_eje'][LANGUAGE_NONE]['#options'])){
             $form['field_premisa_eje'][LANGUAGE_NONE]['#default_value'][0] = $axis ;

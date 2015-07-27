@@ -1,8 +1,12 @@
 <?php
 // Implements hook_form_alter.
-function pdi_lines_form_node_form_alter(&$form, $form_state) {
+function pdi_lines_form_node_form_alter(&$form, $form_state, $form_id) {
   // if you are targeting a specific content type then 
   // you can access the type:
+
+  if ($form_id == 'user_register') {
+    print_r($form); exit;
+  }
 
   if ($form['#node']->type != 'action_line') {
     return;

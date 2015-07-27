@@ -1988,8 +1988,31 @@ body.page-pdi-home {
   list-style: none;
 }
 
+/* line 70, ../sass/components/global/_main.scss */
+#block-search-form {
+  display: inline-block;
+  float: right;
+}
+
+/* line 76, ../sass/components/global/_main.scss */
+#edit-actions #edit-submit {
+  display: inline-block;
+  background: #d4cfbb;
+  padding: 5px 10px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+}
+/* line 87, ../sass/components/global/_main.scss */
+#edit-actions #edit-submit:hover {
+  background: #BAB7A8;
+}
+
 @media only screen and (max-width: 500px) {
-  /* line 71, ../sass/components/global/_main.scss */
+  /* line 93, ../sass/components/global/_main.scss */
   #content {
     padding: 30px 15px 50px 15px;
   }
