@@ -82,7 +82,9 @@ function pdi_admin_block_navigation(){
     
     case 2:
       $node = node_load(arg(1));
-      $output .= '<li><a class="back" href="/linea_accion/'.$node->field_action_line[LANGUAGE_NONE][0]['target_id'].'/actividades">Regresar a la Linea de Accion</a></li>';  
+      if (isset($node->field_action_line[LANGUAGE_NONE][0]['target_id'])) {
+        $output .= '<li><a class="back" href="/linea_accion/'.$node->field_action_line[LANGUAGE_NONE][0]['target_id'].'/actividades">Regresar a la Linea de Accion</a></li>';  
+      }
       break;
 
     case 3:
